@@ -37,7 +37,7 @@ main
         border-radius: 10px
         background-color: $cor-azul-marinho
         margin-top: .7em
-        padding: 0 .5em
+        padding: .7em
         display: flex
         position: relative
         justify-content: space-around
@@ -47,6 +47,9 @@ main
             margin-top: 1.5em
         @media screen and (min-width: 1024px)
             max-width: 50%
+            margin-top: 1.5em
+        @media screen and (min-width: 1440px)
+            max-width: 45%
             margin-top: 1.5em
         .botoes
             display: flex
@@ -63,22 +66,26 @@ main
                 color: $cor-branca
                 cursor: pointer
                 border-radius: 10px
+                @media screen and (min-width: 375px)
+                    font-size: 1em
+                    padding: .3em em
                 @media screen and (min-width: 425px)
                     font-size: 1em
                     padding: .3em 1em
+                @media screen and (min-width: 540px)
+                    padding: .3em 2.5em
                 @media screen and (min-width: 1024px)
                     font-size: 1.2em
                     padding: .3em 1.2em
                 @media screen and (min-width: 1440px)
                     font-size: 1.2em
-                    padding: .3em 3em
-
+                    padding: .3em 2em
         .timer
             display: flex
             flex-direction: column
             width: 60%
             align-items: center
-            justify-content: center
+            justify-content: space-around
             gap: .3em
             .circulo
                 width: 130px
@@ -119,6 +126,7 @@ main
                 font-size: 1em
                 font-weight: bold
                 color: white
+                cursor: pointer
                 @media screen and (min-width: 425px)
                     font-size: 1.2em
 

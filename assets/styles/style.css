@@ -143,6 +143,12 @@ header .redes-sociais a:hover {
   transition: 0.6s ease;
   transform: translate(0, -10px);
 }
+header .redes-sociais a .facebook:hover {
+  color: #0866FF;
+  border: solid 1px black;
+  border-radius: 100%;
+  background-color: #fff;
+}
 
 main {
   display: flex;
@@ -206,7 +212,7 @@ main .pomodoro {
   border-radius: 10px;
   background-color: #0F2167;
   margin-top: 0.7em;
-  padding: 0 0.5em;
+  padding: 0.7em;
   display: flex;
   position: relative;
   justify-content: space-around;
@@ -221,6 +227,12 @@ main .pomodoro {
 @media screen and (min-width: 1024px) {
   main .pomodoro {
     max-width: 50%;
+    margin-top: 1.5em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  main .pomodoro {
+    max-width: 45%;
     margin-top: 1.5em;
   }
 }
@@ -241,10 +253,21 @@ main .pomodoro .botoes button {
   cursor: pointer;
   border-radius: 10px;
 }
+@media screen and (min-width: 375px) {
+  main .pomodoro .botoes button {
+    font-size: 1em;
+    padding: 0.3em em;
+  }
+}
 @media screen and (min-width: 425px) {
   main .pomodoro .botoes button {
     font-size: 1em;
     padding: 0.3em 1em;
+  }
+}
+@media screen and (min-width: 540px) {
+  main .pomodoro .botoes button {
+    padding: 0.3em 2.5em;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -256,7 +279,7 @@ main .pomodoro .botoes button {
 @media screen and (min-width: 1440px) {
   main .pomodoro .botoes button {
     font-size: 1.2em;
-    padding: 0.3em 3em;
+    padding: 0.3em 2em;
   }
 }
 main .pomodoro .timer {
@@ -264,7 +287,7 @@ main .pomodoro .timer {
   flex-direction: column;
   width: 60%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 0.3em;
 }
 main .pomodoro .timer .circulo {
@@ -312,6 +335,7 @@ main .pomodoro .timer button {
   font-size: 1em;
   font-weight: bold;
   color: white;
+  cursor: pointer;
 }
 @media screen and (min-width: 425px) {
   main .pomodoro .timer button {
