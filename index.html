@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="shortcut icon" href="./assets/imgs/tomate.png" type="image/x-icon">
+    <title>Pomodoro</title>
+</head>
+
+<body>
+    <header>
+        <a href="#">
+            <img src="./assets/imgs/tomate.png" alt="Tomate vermelho, logo do Pomodoro">
+            <h1>Pomodoro</h1>
+        </a>
+
+        <div class="nav-bar">
+            <a href="#">Sobre a técnica</a>
+            <a href="#">Como ela funciona</a>
+            <a href="#">Histórico de Tarefas</a>
+        </div>
+
+        <div class="redes-sociais">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </header>
+    <main>
+        <img src="./assets/imgs/foco.png" alt="Pessoa focada estudando">
+        <h3>Inicie uma nova jornada de estudos. <strong>Fique focado por 25 minutos!</strong></h3>
+        <div class="pomodoro">
+            <div class="botoes">
+                <button type="button">Iniciar Sessão</button>
+                <button type="button">Descanso Longo</button>
+                <button type="button">Descanso Curto</button>
+            </div>
+            <div class="timer">
+                <div class="circulo" style="--cor-stroke: #ff2972;">
+                    <div class="dot hora-dot"></div>
+                    <svg>
+                        <circle cx="85" cy="65" r="60"></circle>
+                        <circle cx="85" cy="65" r="60" id="hh"></circle>
+                    </svg>
+                </div>
+                <button>Iniciar</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

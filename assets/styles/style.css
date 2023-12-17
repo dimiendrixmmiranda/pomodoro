@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@200;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@200;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@200;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #FE0000;
+}
+body::-webkit-scrollbar {
+  width: 5px;
+}
+body::-webkit-scrollbar-track {
+  background: #ff5c5c;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #0F2167;
+  border-radius: 20px;
+  border: solid 2px #15245f;
+}
+
+header {
+  height: 18%;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  header {
+    flex-direction: row;
+    height: 15%;
+    align-items: center;
+    -moz-column-gap: 3em;
+         column-gap: 3em;
+    padding: 0 1em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  header {
+    height: 10%;
+    margin-bottom: 1.5em;
+  }
+}
+header a {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+}
+header a img {
+  height: 60%;
+}
+@media screen and (min-width: 1024px) {
+  header a img {
+    height: 90%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  header a img {
+    height: 100%;
+  }
+}
+header a h1 {
+  font-size: 3em;
+  font-family: "Oswald", sans-serif;
+}
+header .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-family: "Inter", sans-serif;
+}
+@media screen and (min-width: 425px) {
+  header .nav-bar {
+    margin-top: 0.6em;
+  }
+}
+@media screen and (min-width: 768px) {
+  header .nav-bar {
+    justify-content: space-around;
+    margin-top: 1em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  header .nav-bar {
+    justify-content: start;
+    margin: 0;
+    gap: 1.5em;
+  }
+}
+header .nav-bar a {
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+  line-height: 1;
+  font-weight: 400;
+}
+@media screen and (min-width: 425px) {
+  header .nav-bar a {
+    font-size: 1.3em;
+  }
+}
+@media screen and (min-width: 768px) {
+  header .nav-bar a {
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+}
+@media screen and (min-width: 1024px) {
+  header .nav-bar a {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-top: 25px;
+  }
+}
+header .redes-sociais {
+  margin-left: auto;
+  display: flex;
+  margin-top: 25px;
+  font-size: 1.8em;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  margin-right: 3em;
+  display: none;
+}
+@media screen and (min-width: 1440px) {
+  header .redes-sociais {
+    display: flex;
+  }
+}
+header .redes-sociais a {
+  cursor: pointer;
+}
+header .redes-sociais a:hover {
+  transition: 0.6s ease;
+  transform: translate(0, -10px);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Oswald", sans-serif;
+}
+main img {
+  width: 70%;
+}
+@media screen and (min-width: 768px) {
+  main img {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main img {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  main img {
+    width: 20%;
+  }
+}
+main h3 {
+  margin-top: 0.3em;
+  text-align: center;
+  max-width: 95%;
+  font-size: 1.8em;
+  line-height: 1.2;
+  color: #fff;
+  margin-top: 0.5em;
+}
+@media screen and (min-width: 425px) {
+  main h3 {
+    font-size: 2.2em;
+    max-width: 90%;
+  }
+}
+@media screen and (min-width: 768px) {
+  main h3 {
+    font-size: 2.5em;
+    max-width: 70%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main h3 {
+    font-size: 3em;
+    max-width: 60%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  main h3 {
+    max-width: 40%;
+  }
+}
+main .pomodoro {
+  width: 90%;
+  height: 30vh;
+  border-radius: 10px;
+  background-color: #0F2167;
+  margin-top: 0.7em;
+  padding: 0 0.5em;
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  margin-bottom: 1.5em;
+}
+@media screen and (min-width: 768px) {
+  main .pomodoro {
+    max-width: 60%;
+    margin-top: 1.5em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main .pomodoro {
+    max-width: 50%;
+    margin-top: 1.5em;
+  }
+}
+main .pomodoro .botoes {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  justify-content: space-around;
+}
+main .pomodoro .botoes button {
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.3em 0;
+  background-color: #FE0000;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+}
+@media screen and (min-width: 425px) {
+  main .pomodoro .botoes button {
+    font-size: 1em;
+    padding: 0.3em 1em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main .pomodoro .botoes button {
+    font-size: 1.2em;
+    padding: 0.3em 1.2em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  main .pomodoro .botoes button {
+    font-size: 1.2em;
+    padding: 0.3em 3em;
+  }
+}
+main .pomodoro .timer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+}
+main .pomodoro .timer .circulo {
+  width: 130px;
+  height: 130px;
+  position: relative;
+}
+main .pomodoro .timer .circulo svg {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  transform: rotate(270deg);
+}
+main .pomodoro .timer .circulo svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: orange;
+  stroke-width: 4;
+}
+main .pomodoro .timer .circulo svg circle:nth-child(2) {
+  stroke: red;
+  stroke-dasharray: 377;
+}
+main .pomodoro .timer .circulo .dot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+main .pomodoro .timer .circulo .dot::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: blue;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px white;
+}
+main .pomodoro .timer button {
+  background-color: #FE0000;
+  padding: 0.3em 3em;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+}
+@media screen and (min-width: 425px) {
+  main .pomodoro .timer button {
+    font-size: 1.2em;
+  }
+}/*# sourceMappingURL=style.css.map */
