@@ -80,12 +80,12 @@ header .nav-bar {
 }
 @media screen and (min-width: 425px) {
   header .nav-bar {
+    justify-content: space-around;
     margin-top: 0.6em;
   }
 }
 @media screen and (min-width: 768px) {
   header .nav-bar {
-    justify-content: space-around;
     margin-top: 1em;
   }
 }
@@ -93,12 +93,13 @@ header .nav-bar {
   header .nav-bar {
     justify-content: start;
     margin: 0;
-    gap: 1.5em;
+    gap: 1em;
   }
 }
 header .nav-bar a {
   text-decoration: none;
-  font-size: 1em;
+  font-size: 0.8em;
+  margin-top: 1em;
   text-align: center;
   line-height: 1;
   font-weight: 400;
@@ -106,6 +107,7 @@ header .nav-bar a {
 @media screen and (min-width: 425px) {
   header .nav-bar a {
     font-size: 1.3em;
+    margin-top: 0.5em;
   }
 }
 @media screen and (min-width: 768px) {
@@ -116,9 +118,9 @@ header .nav-bar a {
 }
 @media screen and (min-width: 1024px) {
   header .nav-bar a {
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-top: 25px;
+    margin-top: 1.9em;
   }
 }
 header .redes-sociais {
@@ -128,12 +130,16 @@ header .redes-sociais {
   font-size: 1.8em;
   -moz-column-gap: 0.5em;
        column-gap: 0.5em;
-  margin-right: 3em;
   display: none;
+}
+@media screen and (min-width: 1024px) {
+  header .redes-sociais {
+    display: flex;
+  }
 }
 @media screen and (min-width: 1440px) {
   header .redes-sociais {
-    display: flex;
+    margin-right: 3em;
   }
 }
 header .redes-sociais a {
@@ -145,7 +151,6 @@ header .redes-sociais a:hover {
 }
 header .redes-sociais a .facebook:hover {
   color: #0866FF;
-  border: solid 1px black;
   border-radius: 100%;
   background-color: #fff;
 }
@@ -155,55 +160,66 @@ main {
   flex-direction: column;
   align-items: center;
   font-family: "Oswald", sans-serif;
+  color: #fff;
 }
-main img {
-  width: 70%;
+main .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  margin: 1.5em 0;
 }
 @media screen and (min-width: 768px) {
-  main img {
-    width: 50%;
+  main .container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5em;
   }
 }
 @media screen and (min-width: 1024px) {
-  main img {
+  main .container {
+    gap: 2em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  main .container {
+    gap: 3em;
+  }
+}
+main .container img {
+  width: 80%;
+}
+@media screen and (min-width: 425px) {
+  main .container img {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 768px) {
+  main .container img {
     width: 40%;
   }
 }
+@media screen and (min-width: 1024px) {
+  main .container img {
+    width: 30%;
+  }
+}
 @media screen and (min-width: 1440px) {
-  main img {
+  main .container img {
     width: 20%;
   }
 }
-main h3 {
-  margin-top: 0.3em;
+main .container h3 {
+  max-width: 90%;
   text-align: center;
-  max-width: 95%;
-  font-size: 1.8em;
-  line-height: 1.2;
-  color: #fff;
-  margin-top: 0.5em;
-}
-@media screen and (min-width: 425px) {
-  main h3 {
-    font-size: 2.2em;
-    max-width: 90%;
-  }
+  font-size: 2em;
+  line-height: 1.1;
 }
 @media screen and (min-width: 768px) {
-  main h3 {
-    font-size: 2.5em;
-    max-width: 70%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  main h3 {
-    font-size: 3em;
-    max-width: 60%;
-  }
-}
-@media screen and (min-width: 1440px) {
-  main h3 {
+  main .container h3 {
     max-width: 40%;
+    font-size: 3em;
+    line-height: 1.2;
   }
 }
 main .pomodoro {
@@ -211,29 +227,33 @@ main .pomodoro {
   height: 30vh;
   border-radius: 10px;
   background-color: #0F2167;
-  margin-top: 0.7em;
   padding: 0.7em;
   display: flex;
   position: relative;
   justify-content: space-around;
   margin-bottom: 1.5em;
 }
+@media screen and (min-width: 425px) {
+  main .pomodoro {
+    height: 32vh;
+  }
+}
 @media screen and (min-width: 768px) {
   main .pomodoro {
-    max-width: 60%;
-    margin-top: 1.5em;
+    max-width: 75%;
+    height: 35vh;
   }
 }
 @media screen and (min-width: 1024px) {
   main .pomodoro {
-    max-width: 50%;
-    margin-top: 1.5em;
+    max-width: 65%;
+    height: 33vh;
   }
 }
 @media screen and (min-width: 1440px) {
   main .pomodoro {
-    max-width: 45%;
-    margin-top: 1.5em;
+    max-width: 55%;
+    height: 33vh;
   }
 }
 main .pomodoro .botoes {
@@ -256,30 +276,28 @@ main .pomodoro .botoes button {
 @media screen and (min-width: 375px) {
   main .pomodoro .botoes button {
     font-size: 1em;
-    padding: 0.3em em;
+    padding: 0.3em 0em;
   }
 }
 @media screen and (min-width: 425px) {
   main .pomodoro .botoes button {
-    font-size: 1em;
-    padding: 0.3em 1em;
+    padding: 0.3em 1.5em;
   }
 }
-@media screen and (min-width: 540px) {
+@media screen and (min-width: 625px) {
   main .pomodoro .botoes button {
     padding: 0.3em 2.5em;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   main .pomodoro .botoes button {
-    font-size: 1.2em;
-    padding: 0.3em 1.2em;
+    padding: 0.3em 3em;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 940px) {
   main .pomodoro .botoes button {
-    font-size: 1.2em;
-    padding: 0.3em 2em;
+    padding: 0.8em 0;
+    font-size: 1.4em;
   }
 }
 main .pomodoro .timer {
@@ -311,6 +329,14 @@ main .pomodoro .timer .circulo svg circle {
 main .pomodoro .timer .circulo svg circle:nth-child(2) {
   stroke: red;
   stroke-dasharray: 377;
+}
+main .pomodoro .timer .circulo .tempo-decorrido {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: white;
 }
 main .pomodoro .timer .circulo .dot {
   position: absolute;
