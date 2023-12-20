@@ -44,7 +44,7 @@
                 <button type="button" id="descanso-longo">Descanso Longo</button>
             </div>
             <div class="timer">
-                <div class="circulo" style="--cor-stroke: #ff2972;">
+                <div class="circulo">
                     <div class="dot tempo-dot"></div>
                     <svg>
                         <circle cx="85" cy="65" r="60"></circle>
@@ -52,13 +52,57 @@
                     </svg>
                     <span id="tempo-decorrido" class="tempo-decorrido"></span>
                 </div>
-                <button id="btn-iniciar">Iniciar</button>
+                <button id="btn-iniciar">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Iniciar</span>
+                </button>
+            </div>
+            <input type="checkbox" name="checkboxMusica" id="checkboxMusica">
+        </div>
+
+        <div class="tarefas">
+            <div class="tarefa-em-andamento">
+                <span>#Em andamento:</span>
+                <div class="tarefa">Aula de Programação</div>
+            </div>
+
+            <h3>Lista de tarefas:</h3>
+
+            <ul class="lista-de-tarefas">
+                <li class="lista-de-tarefas-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Aula de Programacao</span>
+                </li>
+                <li class="lista-de-tarefas-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Aula de Calculo 1</span>
+                </li>
+            </ul>
+
+            <div class="adicionar-tarefa">
+                <div class="titulo-botao">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Adicionar uma nova tarefa</span>
+                </div>
+                <form action="" id="formAdicionarTarefa">
+                    <label for="input-titulo">Digite o título da tarefa:</label>
+                    <input type="text" name="" id="input-titulo" placeholder="Aula de programacao">
+                    <label for="input-descricao">Digite a descrição da tarefa:</label>
+                    <textarea name="" id="input-descricao" cols="30" rows="10"
+                        placeholder="Programacao orientada a objeto..."></textarea>
+                    <div class="container-btn">
+                        <button type="button">Deletar</button>
+                        <button type="button">Cancelar</button>
+                        <button type="submit" id="salvar-tarefa">Salvar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
 
     <script src="./script/temporizador.js"></script>
     <script src="./script/alterarContexto.js"></script>
+    <script src="./script/tarefa.js"></script>
 </body>
 
 </html>

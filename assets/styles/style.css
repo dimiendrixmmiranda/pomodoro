@@ -20,7 +20,7 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: #0F2167;
   border-radius: 20px;
-  border: solid 2px #15245f;
+  border: solid 2px #238bf3;
 }
 
 header {
@@ -214,6 +214,7 @@ main .container h3 {
   text-align: center;
   font-size: 2em;
   line-height: 1.1;
+  font-weight: 300;
 }
 @media screen and (min-width: 768px) {
   main .container h3 {
@@ -225,7 +226,6 @@ main .container h3 {
 main .pomodoro {
   width: 90%;
   height: 30vh;
-  border-radius: 10px;
   background-color: #0F2167;
   padding: 0.7em;
   display: flex;
@@ -262,6 +262,10 @@ main .pomodoro .botoes {
   width: 30%;
   height: 100%;
   justify-content: space-around;
+}
+main .pomodoro .botoes .active {
+  background-color: #fff;
+  color: #FE0000;
 }
 main .pomodoro .botoes button {
   font-size: 0.9em;
@@ -323,11 +327,11 @@ main .pomodoro .timer .circulo svg circle {
   width: 100%;
   height: 100%;
   fill: transparent;
-  stroke: orange;
+  stroke: #238bf3;
   stroke-width: 4;
 }
 main .pomodoro .timer .circulo svg circle:nth-child(2) {
-  stroke: red;
+  stroke: #FE0000;
   stroke-dasharray: 377;
 }
 main .pomodoro .timer .circulo .tempo-decorrido {
@@ -351,20 +355,137 @@ main .pomodoro .timer .circulo .dot::before {
   position: absolute;
   width: 10px;
   height: 10px;
-  background: blue;
+  background: #238bf3;
   border-radius: 50%;
-  box-shadow: 0 0 15px 5px white;
+  box-shadow: 0 0 15px 5px #238bf3;
 }
 main .pomodoro .timer button {
   background-color: #FE0000;
-  padding: 0.3em 3em;
+  padding: 0.3em 2em;
   font-size: 1em;
   font-weight: bold;
   color: white;
   cursor: pointer;
+  display: flex;
+  gap: 0.5em;
 }
 @media screen and (min-width: 425px) {
   main .pomodoro .timer button {
     font-size: 1.2em;
   }
+}
+main .pomodoro #checkboxMusica {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  width: 45px;
+  height: 22px;
+  background-color: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 50px;
+  box-shadow: inset 0 0 7px 2px rgba(0, 0, 0, 0.64);
+  cursor: pointer;
+  transition: 0.5s;
+}
+main .pomodoro #checkboxMusica:checked {
+  background-color: red;
+}
+main .pomodoro #checkboxMusica::before {
+  content: "";
+  background-image: url("../imgs/musica.png");
+  background-size: 8px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  background-color: #FE0000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+main .pomodoro #checkboxMusica:checked::before {
+  transform: translate(100%);
+  background-color: #fff;
+}
+main .tarefas {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: #0F2167;
+  padding: 1em;
+}
+main .tarefas .tarefa-em-andamento {
+  border-bottom: solid 2px black;
+  padding-bottom: 0.8em;
+  font-weight: 400;
+}
+main .tarefas .tarefa-em-andamento span {
+  font-size: 0.8em;
+}
+main .tarefas .tarefa-em-andamento .tarefa {
+  font-size: 1.3em;
+  text-align: center;
+}
+main .tarefas h3 {
+  font-size: 1.8em;
+  margin: 1em 0;
+}
+main .tarefas .lista-de-tarefas {
+  list-style: none;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  margin-bottom: 0.5em;
+}
+main .tarefas .lista-de-tarefas .lista-de-tarefas-item {
+  background-color: #eee;
+  padding: 0.5em 1em;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+main .tarefas .adicionar-tarefa {
+  display: flex;
+  flex-direction: column;
+  background-color: #828791;
+  padding: 0.6em 0 0 0;
+  color: #fff;
+}
+main .tarefas .adicionar-tarefa .titulo-botao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.2em;
+  border-bottom: solid 1px black;
+  padding-bottom: 0.5em;
+}
+main .tarefas .adicionar-tarefa form {
+  flex-direction: column;
+  display: none;
+  transition: 0.6s;
+  padding: 0.8em;
+}
+main .tarefas .adicionar-tarefa form input, main .tarefas .adicionar-tarefa form textarea {
+  padding: 0.5em;
+}
+main .tarefas .adicionar-tarefa form .container-btn {
+  display: flex;
+  position: relative;
+  margin-top: 0.6em;
+}
+main .tarefas .adicionar-tarefa form .container-btn button {
+  font-size: 0.8em;
+  padding: 0.3em 0.5em;
+}
+main .tarefas .adicionar-tarefa form .container-btn button:nth-child(2) {
+  margin-left: auto;
+}
+main .tarefas .adicionar-tarefa .show {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */
