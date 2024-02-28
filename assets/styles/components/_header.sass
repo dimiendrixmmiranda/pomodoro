@@ -1,0 +1,80 @@
+@import '../abstract/_variaveis'
+
+header
+    display: grid
+    grid-template-columns: 80% 1fr
+    font-family: $fonte-primaria
+    a
+        display: flex
+        width: 100%
+        padding: 8px
+        align-items: center
+        text-decoration: none
+        color: $branco
+        column-gap: .5em
+        justify-content: center
+        img
+            width: 20%
+        h1
+            font-family: $fonte-titulo
+            margin-top: .22em
+            font-size: 2.3em
+    .menu-hamburguer
+        width: 100%
+        i
+            font-size: 2.2em
+            width: 100%
+            text-align: center
+            padding-top: .4em
+    section
+        display: none
+@media screen and (min-width: 425px)
+    header
+        a
+            justify-content: start
+            padding-left: 1.5em
+            img
+                height: 80px
+                width: auto
+            h1
+                font-size: 2.7em
+        .menu-hamburguer
+            i
+                font-size: 2.7em
+@media screen and (min-width: 768px)
+    header
+        a
+            justify-content: start
+            padding-left: 1.5em
+            img
+                height: 80px
+                width: auto
+            h1
+                font-size: 2.7em
+        .menu-hamburguer
+            i
+                font-size: 2.7em
+                text-align: end
+                margin-right: .5em
+
+@media screen and (min-width: 1024px)
+    header
+        grid-template-columns: auto 1fr
+        a
+            justify-content: start
+            padding-left: 1.5em
+            img
+                height: 80px
+                width: auto
+            h1
+                font-size: 2.7em
+        .menu-hamburguer
+            display: none
+        section
+            display: flex
+            margin-left: auto
+            margin-right: 2em
+            a
+                white-space: nowrap
+                font-size: 1.2em
+                padding-top: 1.5em

@@ -1,0 +1,457 @@
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  background-color: red;
+  background-image: linear-gradient(to left, #40A2E3, #387ADF, #0C359E);
+  background-size: 500% 100%;
+  animation: degrade-animado 5s infinite alternate;
+  overflow-x: hidden;
+}
+
+@keyframes degrade-animado {
+  0% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 100%;
+  }
+}
+header {
+  display: grid;
+  grid-template-columns: 80% 1fr;
+  font-family: "Anta", sans-serif;
+}
+header a {
+  display: flex;
+  width: 100%;
+  padding: 8px;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  justify-content: center;
+}
+header a img {
+  width: 20%;
+}
+header a h1 {
+  font-family: "Oswald", sans-serif;
+  margin-top: 0.22em;
+  font-size: 2.3em;
+}
+header .menu-hamburguer {
+  width: 100%;
+}
+header .menu-hamburguer i {
+  font-size: 2.2em;
+  width: 100%;
+  text-align: center;
+  padding-top: 0.4em;
+}
+header section {
+  display: none;
+}
+
+@media screen and (min-width: 425px) {
+  header a {
+    justify-content: start;
+    padding-left: 1.5em;
+  }
+  header a img {
+    height: 80px;
+    width: auto;
+  }
+  header a h1 {
+    font-size: 2.7em;
+  }
+  header .menu-hamburguer i {
+    font-size: 2.7em;
+  }
+}
+@media screen and (min-width: 768px) {
+  header a {
+    justify-content: start;
+    padding-left: 1.5em;
+  }
+  header a img {
+    height: 80px;
+    width: auto;
+  }
+  header a h1 {
+    font-size: 2.7em;
+  }
+  header .menu-hamburguer i {
+    font-size: 2.7em;
+    text-align: end;
+    margin-right: 0.5em;
+  }
+}
+@media screen and (min-width: 1024px) {
+  header {
+    grid-template-columns: auto 1fr;
+  }
+  header a {
+    justify-content: start;
+    padding-left: 1.5em;
+  }
+  header a img {
+    height: 80px;
+    width: auto;
+  }
+  header a h1 {
+    font-size: 2.7em;
+  }
+  header .menu-hamburguer {
+    display: none;
+  }
+  header section {
+    display: flex;
+    margin-left: auto;
+    margin-right: 2em;
+  }
+  header section a {
+    white-space: nowrap;
+    font-size: 1.2em;
+    padding-top: 1.5em;
+  }
+}
+main {
+  font-family: "Anta", sans-serif;
+  color: #fff;
+  margin-top: 1.2em;
+}
+
+.banner {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner .banner__titulo {
+  font-size: 2em;
+  text-align: center;
+  font-weight: 200;
+}
+.banner .banner__titulo strong {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 375px) {
+  main {
+    margin-top: 1em;
+  }
+}
+@media screen and (min-width: 425px) {
+  main .banner .banner__img {
+    width: 80%;
+  }
+}
+@media screen and (min-width: 768px) {
+  main .banner {
+    max-width: 80%;
+  }
+  main .banner .banner__titulo {
+    font-size: 3em;
+    line-height: 1.2;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main {
+    margin-top: 3em;
+  }
+  main .banner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  main .banner .banner__img {
+    justify-self: center;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main {
+    margin: 0;
+  }
+  main .banner {
+    height: 85vh;
+  }
+  main .container {
+    height: 100vh;
+  }
+}
+@media screen and (min-width: 1440px) {
+  main {
+    margin: 0;
+  }
+  main .banner {
+    height: 88vh;
+  }
+}
+main .container {
+  margin-top: 1em;
+}
+main .container .categoria {
+  width: 85%;
+  height: 230px;
+  background-color: #211951;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  max-width: 700px;
+}
+main .container .categoria .categoria__item {
+  width: 100%;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+main .container .categoria .categoria__item li {
+  border-bottom: solid 2px black;
+}
+main .container .categoria .categoria__item li:nth-child(1) button {
+  border-right: solid 2px black;
+}
+main .container .categoria .categoria__item li:nth-child(2) button {
+  border-right: solid 2px black;
+}
+main .container .categoria .categoria__item li button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  padding: 0.2em 0;
+  background-color: #FF004D;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+main .container .categoria .categoria__relogio {
+  width: 125px;
+  height: 125px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+main .container .categoria .categoria__musica {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.1em;
+  position: absolute;
+  right: 4.5%;
+  top: 18%;
+}
+main .container .categoria .categoria__musica label {
+  text-transform: uppercase;
+  font-size: 0.6em;
+}
+main .container .categoria .categoria__musica .categoria__musica__input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 45px;
+  height: 20px;
+  box-shadow: 0 0 3px 1px black;
+  border-radius: 15px;
+  background-color: #f0618c;
+  transition: 0.4s ease-in-out;
+  position: relative;
+}
+main .container .categoria .categoria__musica .categoria__musica__input:checked {
+  background-color: #ff004c;
+}
+main .container .categoria .categoria__musica .categoria__musica__input::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #0e51b6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  box-shadow: 0 0 2px black;
+  scale: 1.1;
+  border: solid 1px black;
+  transition: 0.4s ease-in-out;
+}
+main .container .categoria .categoria__musica .categoria__musica__input:checked::before {
+  transition: 0.4s ease-in-out;
+  transform: translate(100%);
+}
+main .container .categoria .categoria__btn__iniciar {
+  position: absolute;
+  bottom: 3.5%;
+  left: 50%;
+  transform: translate(-50%);
+}
+main .container .categoria .categoria__btn__iniciar button {
+  font-size: 1.2em;
+  padding: 0.2em 0;
+  width: 125px;
+  display: flex;
+  -moz-column-gap: 0.3em;
+       column-gap: 0.3em;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  background-color: #FF004D;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+main .container .categoria .categoria__btn__iniciar button i {
+  font-size: 0.8em;
+}
+
+@media screen and (min-width: 375px) {
+  main .categoria .categoria__item {
+    height: 35px;
+  }
+}
+@media screen and (min-width: 768px) {
+  main .container .categoria {
+    height: 270px;
+  }
+  main .container .categoria .categoria__item {
+    height: 40px;
+  }
+  main .container .categoria .categoria__item button {
+    font-size: 1.2em;
+  }
+  main .container .categoria .categoria__musica {
+    top: 20%;
+    row-gap: 0.2em;
+  }
+  main .container .categoria .categoria__musica label {
+    font-size: 0.8em;
+  }
+  main .container .categoria .categoria__musica .categoria__musica__input {
+    width: 55px;
+    height: 25px;
+  }
+  main .container .categoria .categoria__musica .categoria__musica__input::before {
+    height: 25px;
+    width: 25px;
+  }
+  main .container .categoria .categoria__relogio {
+    width: 140px;
+    height: 140px;
+  }
+  main .container .categoria .categoria__btn__iniciar button {
+    width: 140px;
+    height: 35px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  main .container {
+    height: 100vh;
+  }
+}
+main .container .tarefa__atual {
+  width: 90%;
+  margin: 1.5em auto 0 auto;
+  background-color: #FF004D;
+  padding: 0.5em;
+  max-width: 700px;
+  box-shadow: 0 0 5px 2px black;
+}
+main .container .tarefa__atual h2 {
+  font-size: 1.4em;
+  text-align: center;
+}
+main .container .tarefa__atual .tarefa__atual__item {
+  display: grid;
+  grid-template-columns: auto 30px 30px;
+  grid-template-rows: auto 15px;
+  margin-top: 0.8em;
+  background-color: #FFE5AD;
+  color: black;
+  box-shadow: 0 0 2px 1px black;
+  position: relative;
+}
+main .container .tarefa__atual .tarefa__atual__item h3 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  grid-column: 1/2;
+  grid-row: 1/2;
+  padding: 0.3em;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__qtdeCiclos {
+  background-color: #FF004D;
+  text-align: center;
+  border-radius: 100%;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  align-self: center;
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__qtdeCiclos p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__detalhes {
+  grid-row: 2/3;
+  grid-column: 1/4;
+  overflow: hidden;
+  font-size: 0.55em;
+  font-weight: bold;
+  background-color: #FB3640;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-top: solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 0.6em;
+       column-gap: 0.6em;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__detalhes i {
+  rotate: 90deg;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__botoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 3/4;
+  grid-row: 1/2;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__botoes button {
+  width: 20px;
+  height: 20px;
+  font-size: 1.1em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__botoes button:first-child {
+  color: green;
+}
+main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__item__botoes button:last-child {
+  color: red;
+}/*# sourceMappingURL=style.css.map */

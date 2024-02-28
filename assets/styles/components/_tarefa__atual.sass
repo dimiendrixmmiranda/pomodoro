@@ -1,0 +1,82 @@
+main
+    .container
+        .tarefa__atual
+            width: 90%
+            margin: 1.5em auto 0 auto
+            background-color: #FF004D
+            padding: .5em
+            max-width: 700px
+            box-shadow: 0 0 5px 2px black
+            h2
+                font-size: 1.4em
+                text-align: center
+            .tarefa__atual__item
+                display: grid
+                grid-template-columns: auto 30px 30px
+                grid-template-rows: auto 15px
+                margin-top: .8em
+                background-color: #FFE5AD 
+                color: black
+                box-shadow: 0 0 2px 1px black
+                position: relative
+                h3
+                    position: absolute
+                    top: 50%
+                    left: 0
+                    transform: translate(0, -50%)
+                    grid-column: 1/2
+                    grid-row: 1/2
+                    padding: .3em
+                .tarefa__atual__item__qtdeCiclos
+                    background-color: #FF004D
+                    text-align: center
+                    border-radius: 100%
+                    position: relative
+                    width: 25px 
+                    height: 25px
+                    align-self: center
+                    grid-column: 2/3
+                    grid-row: 1/2
+                    p
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        color: white
+                .tarefa__atual__item__detalhes
+                    grid-row: 2/3
+                    grid-column: 1/4
+                    overflow: hidden
+                    font-size: .55em
+                    font-weight: bold
+                    background-color: #FB3640
+                    color: white
+                    border: none
+                    outline: none
+                    cursor: pointer
+                    border-top: solid 1px black
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    column-gap: .6em
+                    i
+                        rotate: 90deg
+                        // rotate: 270deg
+                .tarefa__atual__item__botoes
+                    display: flex
+                    flex-direction: column
+                    justify-content: center
+                    align-items: center
+                    grid-column: 3/4
+                    grid-row: 1/2
+                    button
+                        width: 20px
+                        height: 20px
+                        font-size: 1.1em
+                        background: transparent
+                        border: none
+                        cursor: pointer
+                        &:first-child
+                            color: green
+                        &:last-child
+                            color: red

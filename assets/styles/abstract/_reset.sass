@@ -1,0 +1,18 @@
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    width: 100vw
+    background-color: red
+    background-image: linear-gradient(to left, #40A2E3, #387ADF, #0C359E)
+    background-size: 500% 100% // width, height
+    animation: degrade-animado 5s infinite alternate // alternate ==> de 0 a 100 e de 100 a 0
+    overflow-x: hidden
+
+@keyframes degrade-animado
+    0%
+        background-position-x: 0%
+    100%
+        background-position-x: 100%

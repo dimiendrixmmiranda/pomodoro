@@ -1,0 +1,144 @@
+@import '../abstract/_variaveis'
+main
+    .container
+        margin-top: 1em
+        .categoria
+            width: 85%
+            height: 230px
+            background-color: #211951
+            margin: 0 auto
+            position: relative
+            box-shadow: 0 0 5px black
+            border-radius: 10px
+            max-width: 700px
+            .categoria__item
+                width: 100%
+                list-style-type: none
+                display: grid
+                grid-template-columns: repeat(3, 1fr)
+                overflow: hidden
+                border-radius: 10px 10px 0 0
+                li
+                    border-bottom: solid 2px black
+                    &:nth-child(1)
+                        button
+                            border-right: solid 2px black
+                    &:nth-child(2)
+                        button
+                            border-right: solid 2px black
+                    button
+                        display: block
+                        width: 100%
+                        height: 100%
+                        font-weight: bold
+                        padding: .2em 0
+                        background-color: #FF004D
+                        border: none
+                        outline: none
+                        color: $branco
+            .categoria__relogio
+                width: 125px
+                height: 125px
+                background-color: white
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+            .categoria__musica
+                display: flex
+                flex-direction: column
+                width: 50px
+                justify-content: center
+                align-items: center
+                row-gap: .1em
+                position: absolute
+                right: 4.5%
+                top: 18%
+                label
+                    text-transform: uppercase
+                    font-size: .6em
+                .categoria__musica__input
+                    appearance: none
+                    width: 45px
+                    height: 20px
+                    box-shadow: 0 0 3px 1px black
+                    border-radius: 15px
+                    background-color: #f0618c
+                    transition: .4s ease-in-out
+                    position: relative
+                    &:checked
+                        background-color: #ff004c
+                    &::before
+                        content: ''
+                        width: 20px
+                        height: 20px
+                        background-color: #0e51b6
+                        position: absolute
+                        top: 0
+                        left: 0
+                        border-radius: 100%
+                        box-shadow: 0 0 2px black
+                        scale: 1.1
+                        border: solid 1px black
+                        transition: .4s ease-in-out
+                    &:checked
+                        &::before
+                            transition: .4s ease-in-out
+                            transform: translate(100%)
+            .categoria__btn__iniciar
+                position: absolute
+                bottom: 3.5%
+                left: 50%
+                transform: translate(-50%)
+                button
+                    font-size: 1.2em
+                    padding: .2em 0
+                    width: 125px
+                    display: flex
+                    column-gap: .3em
+                    font-weight: bold
+                    justify-content: center
+                    align-items: center
+                    background-color: #FF004D
+                    border: none
+                    outline: none
+                    color: $branco
+                    i
+                        font-size: .8em
+
+@media screen and ( min-width: 375px )
+    main
+        .categoria
+            .categoria__item
+                height: 35px
+@media screen and ( min-width: 768px )
+    main
+        .container
+            .categoria
+                height: 270px
+                .categoria__item
+                    height: 40px
+                    button
+                        font-size: 1.2em
+                .categoria__musica
+                    top: 20%
+                    row-gap: .2em
+                    label
+                        font-size: .8em
+                    .categoria__musica__input
+                        width: 55px
+                        height: 25px
+                        &::before
+                            height: 25px
+                            width: 25px
+                .categoria__relogio
+                    width: 140px
+                    height: 140px
+                .categoria__btn__iniciar
+                    button
+                        width: 140px
+                        height: 35px
+@media screen and ( min-width: 1024px )
+    main
+        .container
+            height: 100vh
