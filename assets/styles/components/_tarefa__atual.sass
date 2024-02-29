@@ -1,12 +1,14 @@
+@import '../abstract/_variaveis'
 main
     .container
         .tarefa__atual
             width: 90%
-            margin: 1.5em auto 0 auto
-            background-color: #FF004D
+            background-color: $rosa-escuro
             padding: .5em
             max-width: 700px
-            box-shadow: 0 0 5px 2px black
+            box-shadow: 0 0 5px 2px $preto
+            margin: 0 auto
+            height: fit-content
             h2
                 font-size: 1.4em
                 text-align: center
@@ -15,9 +17,9 @@ main
                 grid-template-columns: auto 30px 30px
                 grid-template-rows: auto 15px
                 margin-top: .8em
-                background-color: #FFE5AD 
-                color: black
-                box-shadow: 0 0 2px 1px black
+                background-color: $creme
+                color: $preto
+                box-shadow: 0 0 2px 1px $preto
                 position: relative
                 h3
                     position: absolute
@@ -27,7 +29,7 @@ main
                     grid-column: 1/2
                     grid-row: 1/2
                     padding: .3em
-                .tarefa__atual__item__qtdeCiclos
+                .tarefa__atual__item__ciclos
                     background-color: #FF004D
                     text-align: center
                     border-radius: 100%
@@ -37,6 +39,7 @@ main
                     align-self: center
                     grid-column: 2/3
                     grid-row: 1/2
+                    box-shadow: 0 0 2px $preto
                     p
                         position: absolute
                         top: 50%
@@ -54,14 +57,16 @@ main
                     border: none
                     outline: none
                     cursor: pointer
-                    border-top: solid 1px black
+                    border-top: solid 1px $preto
                     display: flex
                     justify-content: center
                     align-items: center
                     column-gap: .6em
+                    text-shadow: 1px 1px 2px $preto
                     i
                         rotate: 90deg
                         // rotate: 270deg
+                        text-shadow: none
                 .tarefa__atual__item__botoes
                     display: flex
                     flex-direction: column
