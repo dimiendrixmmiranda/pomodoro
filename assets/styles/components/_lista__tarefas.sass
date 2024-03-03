@@ -94,3 +94,35 @@ main
                 color: $branco
                 border-top: solid 2px $preto
                 cursor: pointer
+        .tarefa__formulario
+            display: none
+            flex-direction: column
+            row-gap: .5em
+            fieldset
+                display: flex
+                flex-direction: column
+                border: none
+                padding: 1em 1em 0 1em
+                row-gap: .3em
+                input
+                    height: 25px
+                    padding: .5em
+                textarea
+                    padding: .5em
+                label
+                    font-size: 1.2em
+            .tarefa__formulario__botoes
+                display: flex
+                flex-direction: row
+                column-gap: .5em
+                margin-bottom: .8em
+                button
+                    flex-grow: 1
+                    font-size: 1.2em
+                    font-weight: bold
+                    padding: .5em 0
+                    background-color: $azul-escuro
+                    border: none
+                    color: $branco
+        .tarefa__formulario__active
+            display: flex

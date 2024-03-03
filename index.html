@@ -30,24 +30,42 @@
 
     <main>
         <section class="banner">
-            <h2 class="banner__titulo">Pequenos esforços diários levam a grandes conquistas. <strong>Foque por 25
-                    minutos!</strong></h2>
-            <img class="banner__img" src="./assets/imgs/svg-1.svg" alt="">
+            <h2 class="banner__titulo" id="bannerTitulo">
+                Pequenos esforços diários levam a grandes conquistas. <strong>Foque por 25minutos!</strong>
+            </h2>
+            <img class="banner__img" id="bannerImg" src="./assets/imgs/svg-1.svg" alt="">
         </section>
         <div class="container">
             <section class="categoria">
-                <ul class="categoria__item">
-                    <li><button>Timer</button></li>
-                    <li><button>Descanso Curto</button></li>
-                    <li><button>Descanso Longo</button></li>
+                <ul class="categoria__item" id="listaBtnsCategoria">
+                    <li><button class="active__btn" id="btnTimer">Timer</button></li>
+                    <li><button id="btnDescansoCurto">Descanso Curto</button></li>
+                    <li><button id="btnDescansoLongo">Descanso Longo</button></li>
                 </ul>
-                <div class="categoria__relogio"></div>
+
+                <div class="categoria__relogio">
+                    <div class="categoria__relogio__circle">
+                        <div class="dot" id="tempoDot"></div>
+                        <svg class="svg-1">
+                            <circle cx="63" cy="63" r="60"></circle>
+                            <circle cx="63" cy="63" r="60" id="tempo1"></circle>
+                        </svg>
+                        <svg class="svg-2">
+                            <circle cx="70" cy="70" r="65"></circle>
+                            <circle cx="70" cy="70" r="65" id="tempo2"></circle>
+                        </svg>
+                        <div id="tempo" data-tempo="1500" data-tempo-fator="1500"></div>
+                    </div>
+                    <!-- <p class="categoria__relogio__texto">25:00</p> -->
+                </div>
+
+
                 <div class="categoria__musica">
                     <label for="inputMusica">Música</label>
                     <input class="categoria__musica__input" type="checkbox" name="inputMusica" id="inputMusica">
                 </div>
                 <div class="categoria__btn__iniciar">
-                    <button>
+                    <button id="comecarPausar">
                         <i class="fa-solid fa-play"></i>
                         Iniciar
                     </button>
@@ -97,10 +115,24 @@
                         </button>
                     </li>
                 </ul>
-                <button class="tarefa__adicionar__lista">
+                <button class="tarefa__adicionar__lista" id="adicionarTarefa">
                     <p>Adicionar Tarefa</p>
                     <i class="fa-solid fa-plus"></i>
                 </button>
+                <form class="tarefa__formulario" id="tarefaFormulario">
+                    <fieldset>
+                        <label for="tituloTarefa">Título da tarefa</label>
+                        <input type="text" name="tituloTarefa" id="tituloTarefa">
+                    </fieldset>
+                    <fieldset>
+                        <label for="descricaoTarefa">Descrição da tarefa</label>
+                        <textarea name="descricaoTarefa" id="descricaoTarefa" cols="30" rows="10"></textarea>
+                    </fieldset>
+                    <fieldset class="tarefa__formulario__botoes">
+                        <button id="adicionarTarefaLista" type="submit">Adicionar</button>
+                        <button>Cancelar</button>
+                    </fieldset>
+                </form>
             </section>
 
             <section class="tarefas__concluidas">
@@ -122,6 +154,8 @@
             </section>
         </div>
     </main>
+
+    <script type="module" src="./script/script.js"></script>
 </body>
 
 </html>
