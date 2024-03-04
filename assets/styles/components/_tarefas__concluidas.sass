@@ -20,7 +20,7 @@ main
                 .tarefas__concluidas__item
                     display: grid
                     grid-template-columns: 1fr 30px
-                    grid-template-rows: 35px 15px
+                    grid-template-rows: 35px 15px auto
                     position: relative
                     background-color: $verde-claro
                     border: solid 1px $preto
@@ -68,3 +68,10 @@ main
                         i
                             rotate: 90deg
                             text-shadow: none
+                    .tarefas__concluidas__item__descricao
+                        grid-row: 3/4
+                        grid-column: 1/3
+                        display: none
+                        padding: .5em
+                    .tarefa__concluida__active
+                        display: block
