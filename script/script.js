@@ -1,4 +1,4 @@
-import { adicionarTarefa } from "./adicionarTarefa.js"
+import { adicionarTarefa, toggleContainerTarefasConcluidas } from "./adicionarTarefa.js"
 import { alterarBanner } from "./alterarBanner.js"
 import { configurarRelogio } from "./configurarRelogio.js"
 import { iniciarRelogio } from "./iniciarRelogio.js"
@@ -51,3 +51,4 @@ function btnDetalhesTarefaAtual(){
 }
 
 btnDetalhesTarefaAtual()
+toggleContainerTarefasConcluidas()

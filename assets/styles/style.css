@@ -754,6 +754,7 @@ main .container .tarefas__concluidas {
   max-width: 700px;
   height: -moz-fit-content;
   height: fit-content;
+  display: none;
 }
 main .container .tarefas__concluidas h2 {
   font-size: 1.4em;

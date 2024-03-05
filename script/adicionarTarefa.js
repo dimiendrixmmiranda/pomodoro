@@ -51,6 +51,9 @@ export function adicionarTarefa() {
         limparFormulario()
         console.log(arrayTarefas)
     })
+
+    concluirTarefaAtual()
+    excluirTarefaAtual()
 }
 
 function limparFormulario() {
@@ -78,6 +81,7 @@ function criarTarefa(tarefa) {
     btnAdicionarTarefaAtual.addEventListener('click', (e) => {
         e.preventDefault()
         adicionarTarefaAtual(e)
+        excluirTarefa(e)
         /* Tenho que remover a tarefa atual da lista de tarefas normal. depois implementar a tarefa concluida da tarefa atual */
     })
 
@@ -89,6 +93,7 @@ function criarTarefa(tarefa) {
         e.preventDefault()
         concluirTarefa(e)
         excluirTarefa(e)
+        toggleContainerTarefasConcluidas()
     })
 
 
@@ -164,7 +169,7 @@ function concluirTarefa(e) {
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
 }
 
-function criarTarefaConcluida(tarefaConcluida) {
+export function criarTarefaConcluida(tarefaConcluida) {
     const li = document.createElement('li')
     li.classList.add('tarefas__concluidas__item')
     li.dataset.id = tarefaConcluida.id
@@ -207,15 +212,16 @@ function criarTarefaConcluida(tarefaConcluida) {
     listaTarefasConcluidas.appendChild(li)
 }
 
-function excluirTarefaConcluida(e){
+function excluirTarefaConcluida(e) {
     const li = e.target.closest('.tarefas__concluidas__item')
     const idElemento = parseInt(li.dataset.id)
     arrayTarefas[2].splice(arrayTarefas[2].findIndex(tarefa => tarefa.id == idElemento), 1)
     li.remove()
+    toggleContainerTarefasConcluidas()
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
 }
 
-function adicionarTarefaAtual(e){
+function adicionarTarefaAtual(e) {
     const objetoTarefaAtual = {
         tituloTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefas__lista__item__titulo').innerHTML,
         descricaoTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes').innerHTML,
@@ -226,7 +232,7 @@ function adicionarTarefaAtual(e){
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
 }
 
-function criarTarefaAtual(objetoTarefaAtual){
+function criarTarefaAtual(objetoTarefaAtual) {
     const tituloTarefaAtual = document.querySelector('.tarefa__atual__item h3')
     tituloTarefaAtual.innerHTML = objetoTarefaAtual.tituloTarefa
 
@@ -235,4 +241,56 @@ function criarTarefaAtual(objetoTarefaAtual){
 
     const qtdeCiclos = document.querySelector('.tarefa__atual__item__ciclos p')
     qtdeCiclos.innerHTML = objetoTarefaAtual.qtdeCiclos
+}
+
+function concluirTarefaAtual() {
+    const btnConcluirTarefaAtual = document.querySelector('#btnConcluirTarefaAtual')
+    btnConcluirTarefaAtual.addEventListener('click', (e) => {
+        const objetoTarefaConcluida = {
+            tituloTarefa: e.target.closest('.tarefa__atual__item').querySelector('h3').innerHTML,
+            descricaoTarefa: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__descricao').innerHTML,
+            qtdeCiclos: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__ciclos p').innerHTML,
+        }
+        criarTarefaConcluida(objetoTarefaConcluida)
+        arrayTarefas[2].push(objetoTarefaConcluida)
+        limparTarefaAtual()
+        toggleContainerTarefasConcluidas()
+        localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+    })
+}
+
+function excluirTarefaAtual() {
+    const btnExcluirTarefaAtual = document.querySelector('#btnExcluirTarefaAtual')
+    btnExcluirTarefaAtual.addEventListener('click', (e) => {
+        console.log('teste')
+        const objetoTarefa = {
+            tituloTarefa: e.target.closest('.tarefa__atual__item').querySelector('h3').innerHTML,
+            descricaoTarefa: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__descricao').innerHTML
+        }
+        criarTarefa(objetoTarefa)
+        arrayTarefas[0].push(objetoTarefa)
+        limparTarefaAtual()
+        localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+        toggleContainerTarefasConcluidas()
+    })
+}
+
+function limparTarefaAtual() {
+    arrayTarefas[1][0].tituloTarefa = 'Adicione uma Tarefa'
+    arrayTarefas[1][0].descricaoTarefa = ''
+    arrayTarefas[1][0].qtdeCiclos = '0'
+    document.querySelector('.tarefa__atual__item h3').innerHTML = 'Adicione uma Tarefa'
+    document.querySelector('.tarefa__atual__item__descricao').innerHTML = ''
+    document.querySelector('.tarefa__atual__item__ciclos p').innerHTML = '0'
+}
+
+export function toggleContainerTarefasConcluidas() {
+    const containerTarefasConcluidas = document.querySelector('.tarefas__concluidas')
+    const containerTarefas = document.querySelector('.tarefas')
+    if (arrayTarefas[2].length >= 1) {
+        containerTarefasConcluidas.style.display = 'block'
+    } else{
+        containerTarefasConcluidas.style.display = 'none'
+    }
+    console.log(arrayTarefas[2])
 }
