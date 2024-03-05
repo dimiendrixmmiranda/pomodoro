@@ -40,3 +40,14 @@ btnComecarPausar.addEventListener('click', (e) => {
 })
 
 adicionarTarefa()
+
+function btnDetalhesTarefaAtual(){
+    const btnVerDetalhesTarefaAtual = document.querySelector('.tarefa__atual__item__detalhes')
+    btnVerDetalhesTarefaAtual.addEventListener('click', (e) => {
+        e.preventDefault()
+        const tarefaDescricao = document.querySelector('.tarefa__atual__item__descricao')
+        tarefaDescricao.classList.toggle('tarefa__atual__active')
+    })
+}
+
+btnDetalhesTarefaAtual()

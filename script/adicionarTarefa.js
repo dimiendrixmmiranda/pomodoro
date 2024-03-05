@@ -9,11 +9,15 @@ const arrayTarefas = JSON.parse(localStorage.getItem("tarefas")) || [[], [], []]
 export function adicionarTarefa() {
     // [0] = lista de tarefas
     // [1] = tarefa atual
-    // [2] = tarefas concluidas
+    // [2] = tarefas concluidasalgumas 
 
     arrayTarefas[0].forEach(tarefa => {
         criarTarefa(tarefa)
     });
+
+    arrayTarefas[1].forEach(tarefa => {
+        criarTarefaAtual(tarefa)
+    })
 
     arrayTarefas[2].forEach(tarefaConcluida => {
         criarTarefaConcluida(tarefaConcluida)
@@ -71,6 +75,12 @@ function criarTarefa(tarefa) {
     const btnAdicionarTarefaAtual = document.createElement('button')
     btnAdicionarTarefaAtual.classList.add('tarefas__lista__item__btns__adicionar')
     btnAdicionarTarefaAtual.innerHTML = '<i class="fa-solid fa-plus"></i>'
+    btnAdicionarTarefaAtual.addEventListener('click', (e) => {
+        e.preventDefault()
+        adicionarTarefaAtual(e)
+        /* Tenho que remover a tarefa atual da lista de tarefas normal. depois implementar a tarefa concluida da tarefa atual */
+    })
+
 
     const btnConcluirTarefa = document.createElement('button')
     btnConcluirTarefa.classList.add('tarefas__lista__item__btns__concluir')
@@ -203,4 +213,26 @@ function excluirTarefaConcluida(e){
     arrayTarefas[2].splice(arrayTarefas[2].findIndex(tarefa => tarefa.id == idElemento), 1)
     li.remove()
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+}
+
+function adicionarTarefaAtual(e){
+    const objetoTarefaAtual = {
+        tituloTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefas__lista__item__titulo').innerHTML,
+        descricaoTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes').innerHTML,
+        qtdeCiclos: 0
+    }
+    criarTarefaAtual(objetoTarefaAtual)
+    arrayTarefas[1][0] = objetoTarefaAtual
+    localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+}
+
+function criarTarefaAtual(objetoTarefaAtual){
+    const tituloTarefaAtual = document.querySelector('.tarefa__atual__item h3')
+    tituloTarefaAtual.innerHTML = objetoTarefaAtual.tituloTarefa
+
+    const descricaoTarefa = document.querySelector('.tarefa__atual__item__descricao')
+    descricaoTarefa.innerHTML = objetoTarefaAtual.descricaoTarefa
+
+    const qtdeCiclos = document.querySelector('.tarefa__atual__item__ciclos p')
+    qtdeCiclos.innerHTML = objetoTarefaAtual.qtdeCiclos
 }
