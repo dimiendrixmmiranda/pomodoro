@@ -1,5 +1,4 @@
 const btnAdicionarTarefa = document.querySelector('#adicionarTarefa')
-const btnAdicionarTarefaLista = document.querySelector('#adicionarTarefaLista')
 const tarefaFormulario = document.querySelector('#tarefaFormulario')
 const listaTarefas = document.querySelector('#listaTarefas')
 const listaTarefasConcluidas = document.querySelector('#listaTarefasConcluidas')
@@ -46,10 +45,9 @@ export function adicionarTarefa() {
 
         criarTarefa(tarefaAtual)
         arrayTarefas[0].push(tarefaAtual)
-
         localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
         limparFormulario()
-        console.log(arrayTarefas)
+
     })
 
     concluirTarefaAtual()
@@ -93,7 +91,6 @@ function criarTarefa(tarefa) {
         e.preventDefault()
         concluirTarefa(e)
         excluirTarefa(e)
-        toggleContainerTarefasConcluidas()
     })
 
 
@@ -217,7 +214,6 @@ function excluirTarefaConcluida(e) {
     const idElemento = parseInt(li.dataset.id)
     arrayTarefas[2].splice(arrayTarefas[2].findIndex(tarefa => tarefa.id == idElemento), 1)
     li.remove()
-    toggleContainerTarefasConcluidas()
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
 }
 
@@ -254,8 +250,8 @@ function concluirTarefaAtual() {
         criarTarefaConcluida(objetoTarefaConcluida)
         arrayTarefas[2].push(objetoTarefaConcluida)
         limparTarefaAtual()
-        toggleContainerTarefasConcluidas()
         localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+
     })
 }
 
@@ -271,7 +267,6 @@ function excluirTarefaAtual() {
         arrayTarefas[0].push(objetoTarefa)
         limparTarefaAtual()
         localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
-        toggleContainerTarefasConcluidas()
     })
 }
 
@@ -282,15 +277,4 @@ function limparTarefaAtual() {
     document.querySelector('.tarefa__atual__item h3').innerHTML = 'Adicione uma Tarefa'
     document.querySelector('.tarefa__atual__item__descricao').innerHTML = ''
     document.querySelector('.tarefa__atual__item__ciclos p').innerHTML = '0'
-}
-
-export function toggleContainerTarefasConcluidas() {
-    const containerTarefasConcluidas = document.querySelector('.tarefas__concluidas')
-    const containerTarefas = document.querySelector('.tarefas')
-    if (arrayTarefas[2].length >= 1) {
-        containerTarefasConcluidas.style.display = 'block'
-    } else{
-        containerTarefasConcluidas.style.display = 'none'
-    }
-    console.log(arrayTarefas[2])
 }

@@ -2,10 +2,8 @@
 main
     .container
         .tarefa__atual
-            width: 90%
             background-color: $rosa-escuro
             padding: .5em
-            max-width: 700px
             box-shadow: 0 0 5px 2px $preto
             margin: 0 auto
             height: fit-content
@@ -92,3 +90,9 @@ main
                     padding: .5em
                 .tarefa__atual__active
                     display: block
+@media screen and ( min-width: 1024px )
+    main
+        .container
+            .tarefa__atual
+                width: 100%
+                max-width: 100%

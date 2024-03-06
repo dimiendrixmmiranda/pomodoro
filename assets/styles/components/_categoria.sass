@@ -2,12 +2,10 @@
 main
     .container
         .categoria
-            width: 90%
             height: 230px
             background-color: $azul-escuro
             margin: 0 auto
             box-shadow: 0 0 5px 2px $preto
-            max-width: 700px
             position: relative
             .categoria__item
                 width: 100%
@@ -126,6 +124,10 @@ main
                         background-color: $rosa-escuro
                     &::before
                         content: ''
+                        background-image: url('../imgs/nota-musical.png')
+                        background-size: 12px
+                        background-repeat: no-repeat
+                        background-position: center
                         width: 20px
                         height: 20px
                         background-color: $azul
@@ -205,3 +207,4 @@ main
     main
         .container
             height: 100vh
+            max-width: 100%

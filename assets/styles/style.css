@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Oswald:wght@200..700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -205,9 +206,6 @@ main {
   main .banner {
     height: 85vh;
   }
-  main .container {
-    height: 100vh;
-  }
 }
 @media screen and (min-width: 1440px) {
   main {
@@ -222,12 +220,10 @@ main {
   src: url("../fonts/DS-DIGI.TTF");
 }
 main .container .categoria {
-  width: 90%;
   height: 230px;
   background-color: #004CA5;
   margin: 0 auto;
   box-shadow: 0 0 5px 2px #000;
-  max-width: 700px;
   position: relative;
 }
 main .container .categoria .categoria__item {
@@ -370,6 +366,10 @@ main .container .categoria .categoria__musica .categoria__musica__input:checked 
 }
 main .container .categoria .categoria__musica .categoria__musica__input::before {
   content: "";
+  background-image: url("../imgs/nota-musical.png");
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
   width: 20px;
   height: 20px;
   background-color: #1d8bf7;
@@ -461,6 +461,7 @@ main .container .categoria .categoria__btn__iniciar button i {
 @media screen and (min-width: 1024px) {
   main .container {
     height: 100vh;
+    max-width: 100%;
   }
 }
 @font-face {
@@ -468,10 +469,8 @@ main .container .categoria .categoria__btn__iniciar button i {
   src: url("../fonts/DS-DIGI.TTF");
 }
 main .container .tarefa__atual {
-  width: 90%;
   background-color: #FF004D;
   padding: 0.5em;
-  max-width: 700px;
   box-shadow: 0 0 5px 2px #000;
   margin: 0 auto;
   height: -moz-fit-content;
@@ -574,16 +573,20 @@ main .container .tarefa__atual .tarefa__atual__item .tarefa__atual__active {
   display: block;
 }
 
+@media screen and (min-width: 1024px) {
+  main .container .tarefa__atual {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/DS-DIGI.TTF");
 }
 main .container .tarefas {
-  width: 90%;
   margin: 0 auto;
   background-color: #FF004D;
   box-shadow: 0 0 5px 2px #000;
-  max-width: 700px;
   height: -moz-fit-content;
   height: fit-content;
 }
@@ -748,13 +751,11 @@ main .container .tarefa__formulario__active {
 }
 main .container .tarefas__concluidas {
   background-color: #00A88F;
-  width: 90%;
   margin: 0 auto;
   box-shadow: 0 0 5px 2px #000;
-  max-width: 700px;
   height: -moz-fit-content;
   height: fit-content;
-  display: none;
+  display: block;
 }
 main .container .tarefas__concluidas h2 {
   font-size: 1.4em;
@@ -837,41 +838,78 @@ main .container .tarefas__concluidas .tarefas__concluidas__lista .tarefas__concl
 }
 
 main .container {
+  height: -moz-fit-content;
+  height: fit-content;
   display: grid;
-  grid-template-rows: auto;
   row-gap: 1.5em;
+  grid-column: 1fr;
+  grid-row: repeat(4, auto);
+}
+main .container .categoria {
+  width: 90%;
+  max-width: 900px;
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+main .container .tarefa__atual {
+  width: 90%;
+  max-width: 900px;
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+main .container .tarefas {
+  width: 90%;
+  max-width: 900px;
+  grid-row: 3/4;
+  grid-column: 1/2;
+}
+main .container .tarefas__concluidas {
+  width: 90%;
+  max-width: 900px;
+  grid-row: 4/5;
+  grid-column: 1/2;
 }
 
 @media screen and (min-width: 1024px) {
   main .container {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 270px 112px auto;
+    grid-template-columns: repeat(2, 1fr);
+    width: 900px;
     margin: 0 auto;
     -moz-column-gap: 1em;
          column-gap: 1em;
   }
   main .container .categoria {
-    grid-row: 1/2;
-    grid-column: 1/4;
-    max-width: 850px;
+    grid-column: 1/3;
+    width: 100%;
   }
   main .container .tarefa__atual {
-    grid-row: 2/3;
-    grid-column: 1/4;
-    max-width: 850px;
+    grid-column: 1/3;
+    width: 100%;
   }
   main .container .tarefas {
-    grid-row: 3/4;
     grid-column: 1/2;
-    margin: 0;
-    justify-self: end;
-    max-width: 410px;
+    grid-row: 3/4;
+    width: 100%;
   }
   main .container .tarefas__concluidas {
-    grid-row: 3/4;
     grid-column: 2/3;
-    margin: 0;
-    justify-self: start;
-    max-width: 425px;
+    grid-row: 3/4;
+    width: 100%;
   }
+}
+@font-face {
+  font-family: "DSDIGI";
+  src: url("../fonts/DS-DIGI.TTF");
+}
+footer {
+  margin-top: 2em;
+  background-color: #333A73;
+  padding: 1em 0.5em;
+  font-family: "Anta", sans-serif;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+}
+footer strong {
+  font-weight: 600;
 }/*# sourceMappingURL=style.css.map */

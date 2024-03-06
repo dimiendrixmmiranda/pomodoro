@@ -3,9 +3,21 @@ let intervaloId = null
 const dashArray1 = 377
 const dashArray2 = 409
 
+const audioStart = new Audio('../assets/audio/start.mp3')
+const audioPause = new Audio('../assets/audio/pause.mp3')
+const musicaRelaxante = new Audio('../assets/audio/musica-relaxante.mp3')
+musicaRelaxante.loop
+const btnComecarPausar = document.querySelector('#comecarPausar')
+const inputMusicaRelaxante = document.querySelector('#inputMusica')
+
 export function iniciarRelogio() {
     const tempoADecorrer = parseInt(document.querySelector('#tempo').dataset.tempo)
     iniciarContagemRegressiva(tempoADecorrer)
+    if(inputMusicaRelaxante.checked){
+        musicaRelaxante.play()
+    }else{
+        musicaRelaxante.pause()
+    }
 }
 
 function iniciarContagemRegressiva(tempoADecorrer) {
@@ -15,8 +27,12 @@ function iniciarContagemRegressiva(tempoADecorrer) {
 function contagemRegressiva(tempoADecorrer) {
     if (intervaloId) {
         zerarIntervalo()
+        audioPause.play()
+        btnComecarPausar.innerHTML = '<i class="fa-solid fa-play"></i>Iniciar'
         return
     }
+    audioStart.play()
+    btnComecarPausar.innerHTML = '<i class="fa-solid fa-pause"></i>Pausar'
     intervaloId = setInterval(() => {
         console.log(tempoADecorrer)
         if (tempoADecorrer <= 0) {

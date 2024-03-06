@@ -1,4 +1,4 @@
-import { adicionarTarefa, toggleContainerTarefasConcluidas } from "./adicionarTarefa.js"
+import { adicionarTarefa } from "./adicionarTarefa.js"
 import { alterarBanner } from "./alterarBanner.js"
 import { configurarRelogio } from "./configurarRelogio.js"
 import { iniciarRelogio } from "./iniciarRelogio.js"
@@ -33,15 +33,16 @@ btnDescansoLongo.addEventListener('click', () => {
     alterarBanner('btnDescansoLongo')
     configurarRelogio(900)
 })
-configurarRelogio(1500)
+
 btnComecarPausar.addEventListener('click', (e) => {
     e.preventDefault()
     iniciarRelogio()
 })
 
+configurarRelogio(1500)
 adicionarTarefa()
 
-function btnDetalhesTarefaAtual(){
+function btnDetalhesTarefaAtual() {
     const btnVerDetalhesTarefaAtual = document.querySelector('.tarefa__atual__item__detalhes')
     btnVerDetalhesTarefaAtual.addEventListener('click', (e) => {
         e.preventDefault()
@@ -51,4 +52,3 @@ function btnDetalhesTarefaAtual(){
 }
 
 btnDetalhesTarefaAtual()
-toggleContainerTarefasConcluidas()
