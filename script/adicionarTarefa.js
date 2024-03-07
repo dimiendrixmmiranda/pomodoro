@@ -47,7 +47,6 @@ export function adicionarTarefa() {
         arrayTarefas[0].push(tarefaAtual)
         localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
         limparFormulario()
-
     })
 
     concluirTarefaAtual()
@@ -91,6 +90,7 @@ function criarTarefa(tarefa) {
         e.preventDefault()
         concluirTarefa(e)
         excluirTarefa(e)
+        toggleContainerTarefasConcluidas()
     })
 
 
@@ -215,6 +215,7 @@ function excluirTarefaConcluida(e) {
     arrayTarefas[2].splice(arrayTarefas[2].findIndex(tarefa => tarefa.id == idElemento), 1)
     li.remove()
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+    toggleContainerTarefasConcluidas()
 }
 
 function adicionarTarefaAtual(e) {
@@ -251,6 +252,7 @@ function concluirTarefaAtual() {
         arrayTarefas[2].push(objetoTarefaConcluida)
         limparTarefaAtual()
         localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+        toggleContainerTarefasConcluidas()
 
     })
 }
@@ -277,4 +279,20 @@ function limparTarefaAtual() {
     document.querySelector('.tarefa__atual__item h3').innerHTML = 'Adicione uma Tarefa'
     document.querySelector('.tarefa__atual__item__descricao').innerHTML = ''
     document.querySelector('.tarefa__atual__item__ciclos p').innerHTML = '0'
+}
+
+function toggleContainerTarefasConcluidas() {
+    const listaTarefasConcluidas = document.querySelectorAll('#listaTarefasConcluidas li')
+    const containerTarefasConcluidas = document.querySelector('.tarefas__concluidas')
+    const listaTarefas = document.querySelector('.tarefas')
+    listaTarefas.style.gridColumn = '1/3'
+    if (listaTarefasConcluidas.length > 0) {
+        containerTarefasConcluidas.style.display = 'block'
+        console.log(containerTarefasConcluidas.style.display)
+        listaTarefas.style.gridColumn = '1/2'
+        return
+    } else {
+        containerTarefasConcluidas.style.display = 'none'
+        return
+    }
 }

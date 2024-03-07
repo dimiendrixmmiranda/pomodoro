@@ -29,6 +29,7 @@ function contagemRegressiva(tempoADecorrer) {
         zerarIntervalo()
         audioPause.play()
         btnComecarPausar.innerHTML = '<i class="fa-solid fa-play"></i>Iniciar'
+        inputMusicaRelaxante.checked = false
         return
     }
     audioStart.play()
