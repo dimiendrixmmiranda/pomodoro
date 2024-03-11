@@ -17,76 +17,99 @@ main
                 padding: 0 .5em .5em .5em
                 row-gap: .8em
                 .tarefas__lista__item
-                    display: grid
-                    grid-template-columns: 1fr 45px auto
-                    grid-template-rows: auto 15px
-                    background-color: $creme
-                    position: relative
-                    color: $preto
-                    box-shadow: 0 0 2px 1px $preto
-                    .tarefas__lista__item__titulo
-                        grid-row: 1/2
-                        grid-column: 1/2
-                        position: absolute
-                        top: 50%
-                        left: 1%
-                        transform: translate(0, -50%)
-                    .tarefas__lista__item__btns
-                        grid-column: 2/3
-                        grid-row: 1/2
-                        display: flex
-                        gap: .2em
-                        row-gap: 0
-                        flex-wrap: wrap
-                        button
-                            width: 20px
-                            height: 20px
+                    display: flex
+                    flex-direction: column
+                    .container__tarefa
+                        display: grid
+                        grid-template-columns: 1fr 45px auto
+                        grid-template-rows: auto 15px
+                        background-color: $creme
+                        position: relative
+                        color: $preto
+                        box-shadow: 0 0 2px 1px $preto
+                        .tarefas__lista__item__titulo
+                            grid-row: 1/2
+                            grid-column: 1/2
+                            position: absolute
+                            top: 50%
+                            left: 1%
+                            transform: translate(0, -50%)
+                        .tarefas__lista__item__btns
+                            grid-column: 2/3
+                            grid-row: 1/2
+                            display: flex
+                            gap: .2em
+                            row-gap: 0
+                            flex-wrap: wrap
+                            button
+                                width: 20px
+                                height: 20px
+                                display: flex
+                                justify-content: center
+                                align-items: center
+                                text-align: center
+                                cursor: pointer
+                                background-color: transparent
+                                border: none
+                                outline: none
+                                font-size: 1em
+                            .tarefas__lista__item__btns__adicionar
+                                color: $azul-escuro
+                            .tarefas__lista__item__btns__concluir
+                                color: $verde
+                            .tarefas__lista__item__btns__alterar
+                                color: $laranja
+                            .tarefas__lista__item__btns__excluir
+                                color: $vermelho
+                        .tarefas__lista__item__btn-detalhes
+                            grid-column: 1/4
+                            grid-row: 2/3
+                            overflow: hidden
+                            font-size: .55em
+                            font-weight: bold
+                            background-color: $rosa-sendario
+                            color: white
+                            border: none
+                            outline: none
+                            cursor: pointer
+                            border-top: solid 1px $preto
                             display: flex
                             justify-content: center
                             align-items: center
-                            text-align: center
-                            cursor: pointer
-                            background-color: transparent
-                            border: none
-                            outline: none
-                            font-size: 1em
-                        .tarefas__lista__item__btns__adicionar
-                            color: $azul-escuro
-                        .tarefas__lista__item__btns__concluir
-                            color: $verde
-                        .tarefas__lista__item__btns__alterar
-                            color: $laranja
-                        .tarefas__lista__item__btns__excluir
-                            color: $vermelho
-                    .tarefas__lista__item__btn-detalhes
-                        grid-column: 1/4
-                        grid-row: 2/3
-                        overflow: hidden
-                        font-size: .55em
-                        font-weight: bold
-                        background-color: $rosa-sendario
-                        color: white
-                        border: none
-                        outline: none
-                        cursor: pointer
-                        border-top: solid 1px $preto
+                            column-gap: .6em
+                            text-shadow: 1px 1px 2px $preto
+                            i
+                                rotate: 90deg
+                                text-shadow: none
+                        .tarefa__lista__item__detalhes
+                            grid-row: 3/4
+                            grid-column: 1/3
+                            padding: .5em
+                            display: none
+                        .active__tarefa__descricao
+                            display: block
+                            width: 100%
+                            height: auto
+                    .container__form
                         display: flex
-                        justify-content: center
-                        align-items: center
-                        column-gap: .6em
-                        text-shadow: 1px 1px 2px $preto
-                        i
-                            rotate: 90deg
-                            text-shadow: none
-                    .tarefa__lista__item__detalhes
-                        grid-row: 3/4
-                        grid-column: 1/3
+                        flex-direction: column
                         padding: .5em
-                        display: none
-                    .active__tarefa__descricao
-                        display: block
-                        width: 100%
-                        height: auto
+                        background-color: $azul-escuro
+                        font-size: 1.1em
+                        margin-top: .5em
+                        label
+                            margin-bottom: .2em
+                        input
+                            height: 22px
+                        input, textarea
+                            margin-bottom: .8em
+                        div
+                            width: 100%
+                            display: flex
+                            button
+                                flex-grow: 1
+                                font-size: 1em
+                                padding: .5em 0
             .tarefa__adicionar__lista
                 display: flex
                 width: 100%
@@ -134,4 +157,3 @@ main
                     color: $branco
         .tarefa__formulario__active
             display: flex
-        

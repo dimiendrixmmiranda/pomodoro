@@ -1,15 +1,20 @@
+import { sortearID } from "./sortearId.js"
+import { toggleVerDetalhes } from "./toggleVerDetalhes.js"
+
 const btnAdicionarTarefa = document.querySelector('#adicionarTarefa')
 const tarefaFormulario = document.querySelector('#tarefaFormulario')
 const listaTarefas = document.querySelector('#listaTarefas')
 const listaTarefasConcluidas = document.querySelector('#listaTarefasConcluidas')
+const tarefaAtual = document.querySelector('.tarefa__atual__item')
+const formAlterarTarefa = document.querySelector('#formAlterarTarefa')
 
 const arrayTarefas = JSON.parse(localStorage.getItem("tarefas")) || [[], [], []]
 
 export function adicionarTarefa() {
     // [0] = lista de tarefas
     // [1] = tarefa atual
-    // [2] = tarefas concluidasalgumas 
-
+    // [2] = tarefas concluidas
+    
     arrayTarefas[0].forEach(tarefa => {
         criarTarefa(tarefa)
     });
@@ -20,6 +25,7 @@ export function adicionarTarefa() {
 
     arrayTarefas[2].forEach(tarefaConcluida => {
         criarTarefaConcluida(tarefaConcluida)
+        toggleContainerTarefasConcluidas()
     })
 
     btnAdicionarTarefa.addEventListener('click', (e) => {
@@ -35,12 +41,8 @@ export function adicionarTarefa() {
 
         const tarefaAtual = {
             tituloTarefa: e.target.closest('.tarefas').querySelector('#tituloTarefa').value,
-            descricaoTarefa: e.target.closest('.tarefas').querySelector('#descricaoTarefa').value
-        }
-        if (tarefaAtual.id) {
-            tarefaAtual.id = tarefaAtual.id
-        } else {
-            tarefaAtual.id = arrayTarefas[0].length
+            descricaoTarefa: e.target.closest('.tarefas').querySelector('#descricaoTarefa').value,
+            id: sortearID().join('')
         }
 
         criarTarefa(tarefaAtual)
@@ -98,6 +100,12 @@ function criarTarefa(tarefa) {
     btnAlterarTarefa.classList.add('tarefas__lista__item__btns__alterar')
     btnAlterarTarefa.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>'
 
+    btnAlterarTarefa.addEventListener('click', (e) => {
+        e.preventDefault()
+        criarFormularioAlterarTarefa(e, tarefa)
+    })
+
+
     const btnExcluirTarefa = document.createElement('button')
     btnExcluirTarefa.classList.add('tarefas__lista__item__btns__excluir')
     btnExcluirTarefa.innerHTML = '<i class="fa-solid fa-square-xmark"></i>'
@@ -126,18 +134,17 @@ function criarTarefa(tarefa) {
     listaBtns.appendChild(btnAlterarTarefa)
     listaBtns.appendChild(btnExcluirTarefa)
 
-    li.appendChild(h3)
-    li.appendChild(listaBtns)
-    li.appendChild(btnVerDetalhes)
-    li.appendChild(conteudoVerDetalhes)
+    const divContainer = document.createElement('div')
+    divContainer.classList.add('container__tarefa')
 
+    divContainer.appendChild(h3)
+    divContainer.appendChild(listaBtns)
+    divContainer.appendChild(btnVerDetalhes)
+    divContainer.appendChild(conteudoVerDetalhes)
+
+    li.appendChild(divContainer)
     listaTarefas.appendChild(li)
 
-}
-
-function toggleVerDetalhes(e) {
-    const divConteudoDetalhes = e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes')
-    divConteudoDetalhes.classList.toggle('active__tarefa__descricao')
 }
 
 function excluirTarefa(e) {
@@ -148,16 +155,11 @@ function excluirTarefa(e) {
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
 }
 
-function concluirTarefa(e) {
+export function concluirTarefa(e) {
     const tarefaConcluida = {
         tituloTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefas__lista__item__titulo').innerHTML,
-        descricaoTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes').innerHTML
-    }
-
-    if (tarefaConcluida.id) {
-        tarefaConcluida.id = tarefaConcluida.id
-    } else {
-        tarefaConcluida.id = arrayTarefas[2].length
+        descricaoTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes').innerHTML,
+        id: sortearID().join('')
     }
 
     criarTarefaConcluida(tarefaConcluida)
@@ -166,7 +168,63 @@ function concluirTarefa(e) {
     localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
 }
 
-export function criarTarefaConcluida(tarefaConcluida) {
+
+
+function excluirTarefaConcluida(e) {
+    const li = e.target.closest('.tarefas__concluidas__item')
+    const idElemento = parseInt(li.dataset.id)
+    arrayTarefas[2].splice(arrayTarefas[2].findIndex(tarefa => tarefa.id == idElemento), 1)
+    li.remove()
+    localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+    toggleContainerTarefasConcluidas()
+}
+
+function adicionarTarefaAtual(e) {
+    const objetoTarefaAtual = {
+        tituloTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefas__lista__item__titulo').innerHTML,
+        descricaoTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes').innerHTML,
+        qtdeCiclos: 0
+    }
+    criarTarefaAtual(objetoTarefaAtual)
+    arrayTarefas[1][0] = objetoTarefaAtual
+    localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+}
+
+function criarTarefaAtual(objetoTarefaAtual) {
+    tarefaAtual.dataset.tarefa = 'true'
+
+    const tituloTarefaAtual = document.querySelector('.tarefa__atual__item h3')
+    tituloTarefaAtual.innerHTML = objetoTarefaAtual.tituloTarefa
+
+    const descricaoTarefa = document.querySelector('.tarefa__atual__item__descricao')
+    descricaoTarefa.innerHTML = objetoTarefaAtual.descricaoTarefa
+
+    const qtdeCiclos = document.querySelector('.tarefa__atual__item__ciclos p')
+    qtdeCiclos.innerHTML = objetoTarefaAtual.qtdeCiclos
+
+}
+
+function concluirTarefaAtual() {
+    const btnConcluirTarefaAtual = document.querySelector('#btnConcluirTarefaAtual')
+    btnConcluirTarefaAtual.addEventListener('click', (e) => {
+        if (tarefaAtual.dataset.tarefa == 'true') {
+            const objetoTarefaConcluida = {
+                tituloTarefa: e.target.closest('.tarefa__atual__item').querySelector('h3').innerHTML,
+                descricaoTarefa: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__descricao').innerHTML,
+                qtdeCiclos: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__ciclos p').innerHTML,
+                id: sortearID().join('')
+            }
+            criarTarefaConcluida(objetoTarefaConcluida)
+            arrayTarefas[2].push(objetoTarefaConcluida)
+            limparTarefaAtual()
+            tarefaAtual.dataset.tarefa = 'false'
+            toggleContainerTarefasConcluidas()
+            localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+        }
+    })
+}
+
+function criarTarefaConcluida(tarefaConcluida) {
     const li = document.createElement('li')
     li.classList.add('tarefas__concluidas__item')
     li.dataset.id = tarefaConcluida.id
@@ -209,66 +267,21 @@ export function criarTarefaConcluida(tarefaConcluida) {
     listaTarefasConcluidas.appendChild(li)
 }
 
-function excluirTarefaConcluida(e) {
-    const li = e.target.closest('.tarefas__concluidas__item')
-    const idElemento = parseInt(li.dataset.id)
-    arrayTarefas[2].splice(arrayTarefas[2].findIndex(tarefa => tarefa.id == idElemento), 1)
-    li.remove()
-    localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
-    toggleContainerTarefasConcluidas()
-}
-
-function adicionarTarefaAtual(e) {
-    const objetoTarefaAtual = {
-        tituloTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefas__lista__item__titulo').innerHTML,
-        descricaoTarefa: e.target.closest('.tarefas__lista__item').querySelector('.tarefa__lista__item__detalhes').innerHTML,
-        qtdeCiclos: 0
-    }
-    criarTarefaAtual(objetoTarefaAtual)
-    arrayTarefas[1][0] = objetoTarefaAtual
-    localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
-}
-
-function criarTarefaAtual(objetoTarefaAtual) {
-    const tituloTarefaAtual = document.querySelector('.tarefa__atual__item h3')
-    tituloTarefaAtual.innerHTML = objetoTarefaAtual.tituloTarefa
-
-    const descricaoTarefa = document.querySelector('.tarefa__atual__item__descricao')
-    descricaoTarefa.innerHTML = objetoTarefaAtual.descricaoTarefa
-
-    const qtdeCiclos = document.querySelector('.tarefa__atual__item__ciclos p')
-    qtdeCiclos.innerHTML = objetoTarefaAtual.qtdeCiclos
-}
-
-function concluirTarefaAtual() {
-    const btnConcluirTarefaAtual = document.querySelector('#btnConcluirTarefaAtual')
-    btnConcluirTarefaAtual.addEventListener('click', (e) => {
-        const objetoTarefaConcluida = {
-            tituloTarefa: e.target.closest('.tarefa__atual__item').querySelector('h3').innerHTML,
-            descricaoTarefa: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__descricao').innerHTML,
-            qtdeCiclos: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__ciclos p').innerHTML,
-        }
-        criarTarefaConcluida(objetoTarefaConcluida)
-        arrayTarefas[2].push(objetoTarefaConcluida)
-        limparTarefaAtual()
-        localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
-        toggleContainerTarefasConcluidas()
-
-    })
-}
-
 function excluirTarefaAtual() {
     const btnExcluirTarefaAtual = document.querySelector('#btnExcluirTarefaAtual')
     btnExcluirTarefaAtual.addEventListener('click', (e) => {
-        console.log('teste')
-        const objetoTarefa = {
-            tituloTarefa: e.target.closest('.tarefa__atual__item').querySelector('h3').innerHTML,
-            descricaoTarefa: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__descricao').innerHTML
+        if (tarefaAtual.dataset.tarefa == 'true') {
+            const objetoTarefa = {
+                tituloTarefa: e.target.closest('.tarefa__atual__item').querySelector('h3').innerHTML,
+                descricaoTarefa: e.target.closest('.tarefa__atual__item').querySelector('.tarefa__atual__item__descricao').innerHTML,
+                id: sortearID().join('')
+            }
+            criarTarefa(objetoTarefa)
+            arrayTarefas[0].push(objetoTarefa)
+            limparTarefaAtual()
+            tarefaAtual.dataset.tarefa = 'false'
+            localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
         }
-        criarTarefa(objetoTarefa)
-        arrayTarefas[0].push(objetoTarefa)
-        limparTarefaAtual()
-        localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
     })
 }
 
@@ -282,17 +295,79 @@ function limparTarefaAtual() {
 }
 
 function toggleContainerTarefasConcluidas() {
+    const listaTarefas = document.querySelector('.tarefas')
     const listaTarefasConcluidas = document.querySelectorAll('#listaTarefasConcluidas li')
     const containerTarefasConcluidas = document.querySelector('.tarefas__concluidas')
-    const listaTarefas = document.querySelector('.tarefas')
     listaTarefas.style.gridColumn = '1/3'
     if (listaTarefasConcluidas.length > 0) {
         containerTarefasConcluidas.style.display = 'block'
-        console.log(containerTarefasConcluidas.style.display)
         listaTarefas.style.gridColumn = '1/2'
         return
     } else {
         containerTarefasConcluidas.style.display = 'none'
         return
     }
+}
+
+function criarFormularioAlterarTarefa(e, tarefa){
+    const liPai = e.target.closest('.tarefas__lista__item') 
+
+    const formAlterarTarefa = document.createElement('form')
+    formAlterarTarefa.classList.add('container__form')
+
+    const labelNovoTituloTarefa = document.createElement('label')
+    labelNovoTituloTarefa.setAttribute('for', 'novoTituloTarefa')
+    labelNovoTituloTarefa.innerHTML = 'Novo título da tarefa:'
+    const inputNovoTituloTarefa = document.createElement('input')
+    inputNovoTituloTarefa.id = 'novoTituloTarefa'
+    inputNovoTituloTarefa.value = tarefa.tituloTarefa
+    inputNovoTituloTarefa.type = 'text'
+    inputNovoTituloTarefa.focus()
+
+    const labelNovoDescricaoTarefa = document.createElement('label')
+    labelNovoDescricaoTarefa.setAttribute('for', 'novoDescricaoTarefa')
+    labelNovoDescricaoTarefa.innerHTML = 'Nova descricão da tarefa'
+    const textareaDescricaoTarefa = document.createElement('textarea')
+    textareaDescricaoTarefa.id = 'novoDescricaoTarefa'
+    textareaDescricaoTarefa.value = tarefa.descricaoTarefa
+    textareaDescricaoTarefa.setAttribute('cols', '30')
+    textareaDescricaoTarefa.setAttribute('rows', '10')
+
+    const divBotoes = document.createElement('div')
+    const buttonAlterarTarefa = document.createElement('button')
+    buttonAlterarTarefa.type = 'submit'
+    buttonAlterarTarefa.innerHTML = 'Alterar Tarefa'
+    buttonAlterarTarefa.addEventListener('click', (e) => {
+        e.preventDefault()
+        const tarefaAlterada = {
+            tituloTarefa: e.target.closest('.container__form').querySelector('#novoTituloTarefa').value,
+            descricaoTarefa: e.target.closest('.container__form').querySelector('#novoDescricaoTarefa').value,
+            id: tarefa.id
+        }
+        liPai.querySelector('.tarefas__lista__item__titulo').innerHTML = tarefaAlterada.tituloTarefa
+        liPai.querySelector('.tarefa__lista__item__detalhes').innerHTML = tarefaAlterada.descricaoTarefa
+        const idTarefaAlterar = arrayTarefas[0].findIndex(t => parseInt(t.id) === parseInt(tarefa.id))
+        arrayTarefas[0][idTarefaAlterar] = tarefaAlterada
+        localStorage.setItem("tarefas", JSON.stringify(arrayTarefas))
+
+        e.target.closest('.container__form').remove()
+    })
+
+    const buttonCancelar = document.createElement('button')
+    buttonCancelar.addEventListener('click', (e) => {
+        e.preventDefault()
+        e.target.closest('.container__form').remove()
+    })
+
+    buttonCancelar.innerHTML = 'Cancelar'
+    divBotoes.appendChild(buttonAlterarTarefa)
+    divBotoes.appendChild(buttonCancelar)
+
+    formAlterarTarefa.appendChild(labelNovoTituloTarefa)
+    formAlterarTarefa.appendChild(inputNovoTituloTarefa)
+    formAlterarTarefa.appendChild(labelNovoDescricaoTarefa)
+    formAlterarTarefa.appendChild(textareaDescricaoTarefa)
+    formAlterarTarefa.appendChild(divBotoes)
+
+    liPai.appendChild(formAlterarTarefa)
 }
