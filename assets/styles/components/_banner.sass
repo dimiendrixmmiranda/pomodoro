@@ -1,0 +1,121 @@
+@import '../abstract/_variaveis'
+main
+    .principal-banner
+        display: flex
+        flex-direction: column
+        row-gap: .7em
+        .principal-banner-imagem
+            display: flex
+            max-width: 90%
+            margin: 0 auto
+        .principal-banner-texto
+            position: relative
+            font-size: 1.8em
+            font-family: $fonte-primaria
+            line-height: 1.08
+            text-align: center
+            max-width: 90%
+            margin: 0 auto
+            color: $branco
+            font-weight: 400
+            text-shadow: 1px 1px 2px $preto
+            width: 100%
+            height: 190px
+        .principal-banner-ancora
+            text-decoration: none
+            display: flex
+            justify-content: center
+            color: $branco
+            font-size: 3em
+            animation: $animacaoFlutuar
+            margin-top: .2em
+
+@media screen and ( min-width: 375px )
+    main
+        .principal-banner
+            .principal-banner-imagem
+                width: 80%
+            .principal-banner-texto
+                width: 85%
+                font-size: 2em
+                height: 210px
+            .principal-banner-ancora
+                font-size: 3.5em
+                margin-top: .4em
+
+@media screen and ( min-width: 425px )
+    main
+        .principal-banner
+            .principal-banner-imagem
+                width: 70%
+                max-width: 330px
+            .principal-banner-texto
+                width: 80%
+                font-size: 2em
+                max-width: 330px
+            .principal-banner-ancora
+                font-size: 3.5em
+                margin-top: .4em
+@media screen and ( min-width: 768px )
+    main
+        .principal-banner
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            max-width: 90%
+            margin: 2em auto
+            justify-content: center
+            align-items: center
+            row-gap: 0
+            .principal-banner-imagem
+                width: 90%
+                max-width: 330px
+            .principal-banner-texto
+                width: 90%
+                font-size: 2em
+                height: auto
+            .principal-banner-ancora
+                grid-column: 1/3
+                font-size: 3.5em
+                margin-top: .4em
+@media screen and ( min-width: 1024px )
+    main
+        .principal-banner
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            max-width: 90%
+            margin: 2em auto
+            justify-content: center
+            align-items: center
+            row-gap: 0
+            .principal-banner-imagem
+                width: 95%
+                max-width: 70%
+            .principal-banner-texto
+                width: 100%
+                max-width: 70%
+                font-size: 2.5em
+            .principal-banner-ancora
+                grid-column: 1/3
+                font-size: 3.5em
+                margin-top: 1.4em
+@media screen and ( min-width: 1440px )
+    main
+        .principal-banner
+            display: grid
+            grid-template-columns: repeat(2, 1fr)
+            max-width: 70%
+            margin: 2em auto
+            justify-content: center
+            align-items: center
+            row-gap: 0
+            .principal-banner-imagem
+                width: 100%
+                max-width: 90%
+            .principal-banner-texto
+                max-width: 90%
+                font-size: 3em
+            .principal-banner-ancora
+                grid-column: 1/3
+                font-size: 3.5em
+                margin-top: 1.4em
+                margin-bottom: .5em

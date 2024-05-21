@@ -1,0 +1,23 @@
+@import '../abstract/_variaveis'
+.principal-frases
+    overflow: hidden
+    font-family: $fonte-secundaria
+    font-weight: 500
+    font-size: 1.5em
+    padding: .5em
+    color: $branco
+    text-shadow: 1px 1px 2px $preto
+    line-height: 1.2
+    margin: 0 auto
+    width: 100%
+    .principal-frases-frase
+        color: $vermelho-2
+        width: 100%
+        position: relative
+        &::after 
+            content: '|'
+            color: $branco
+            position: absolute
+            right: -8px
+            animation: $piscarCursor
+            opacity: 1

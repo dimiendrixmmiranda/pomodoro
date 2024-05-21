@@ -1,0 +1,1 @@
+export const arrayTarefas = JSON.parse(localStorage.getItem("tarefas")) || []

@@ -1,0 +1,52 @@
+@import '../abstract/_variaveis'
+.relogio
+    display: flex
+    gap: 40px
+    height: fit-content
+    margin: 0 auto
+    .relogio-circulo
+        width: 190px
+        height: 190px
+        display: flex
+        justify-content: center
+        align-items: center
+        position: relative
+        .relogio-circulo-tempo
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%, -50%)
+            color: white
+            font-size: 3em
+            font-family: $fonte-relogio
+        svg
+            position: relative
+            transform: rotate(270deg)
+            width: 100%
+            height: 100%
+            circle
+                fill: transparent
+                stroke: $vermelho-2
+                stroke-width: 4
+                transform: translate(5px, 5px)
+                &:nth-child(2)
+                    stroke: $branco
+                    stroke-dasharray: 565
+                    transition: 1s ease
+        .relogio-circulo-dot
+            position: absolute
+            width: 100%
+            height: 100%
+            z-index: 10
+            display: flex
+            justify-content: center
+            transition: 1s ease
+            &::before
+                content: ''
+                position: absolute
+                width: 10px
+                height: 10px
+                background: $vermelho-2
+                border-radius: 100%
+                box-shadow: 0 0 10px $vermelho-2
+                top: -1px

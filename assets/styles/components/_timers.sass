@@ -1,0 +1,79 @@
+@import '../abstract/_variaveis'
+main
+    .principal-timers
+        max-width: 95%
+        margin: 1.5em auto
+        display: flex
+        flex-direction: column
+        .principal-timers-botoes
+            width: 100%
+            display: flex
+            column-gap: 1em
+            white-space: nowrap
+            justify-content: center
+            .principal-timers-botoes-btn
+                font-size: 1.1em
+                font-family: $fonte-primaria
+                background: transparent
+                border: none
+                color: $branco
+                cursor: pointer
+            .botao-ativo
+                position: relative
+                &::after
+                    content: ''
+                    width: 105%
+                    height: 2px
+                    background-color: red
+                    position: absolute
+                    left: 0
+                    top: 105%
+                    animation: $animacaoCrescerBorda
+        .principal-timers-relogio
+            width: 90%
+            height: 250px
+            display: flex
+            margin: 0 auto
+            margin-top: 1em
+            position: relative
+            #btnIniciar
+                position: absolute
+                bottom: 0%
+                left: 50%
+                transform: translate(-50%, 0)
+                font-size: 1.4em
+                font-family: $fonte-terciaria
+                padding: .4em 2em
+                border-radius: 8px
+                background-color: $vermelho-2
+                color: white
+                display: flex
+                column-gap: .4em
+                justify-content: center
+                align-items: center
+                outline: none
+                border: none
+                i
+                    font-size: .8em
+                p
+                    margin-bottom: .15em
+@media screen and ( min-width: 425px )
+    main
+        .principal-timers
+            .principal-timers-botoes
+                .principal-timers-botoes-btn
+                    font-size: 1.3em
+@media screen and ( min-width: 768px )
+    main
+        .principal-timers
+            .principal-timers-botoes
+                .principal-timers-botoes-btn
+                    font-size: 1.25em
+            .principal-timers-relogio
+                height: 265px
+@media screen and ( min-width: 1024px )
+    main
+        .principal-timers
+            .principal-timers-botoes
+                .principal-timers-botoes-btn
+                    font-size: 1.5em

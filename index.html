@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./assets/imgs/tomate-em-forma-de-relogio.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <title>Pomodoro - Foque. Execute. Conquiste</title>
+</head>
+
+<body data-tema="escuro">
+    <header class="cabecalho">
+        <a href="./index.html" class="cabecalho-link">
+            <img class="cabecalho-link-imagem" src="./assets/imgs/tomate-em-forma-de-relogio.png"
+                alt="tomate-em-forma-de-relogio-logo">
+            <h1 class="cabecalho-link-titulo">Pomodoro</h1>
+        </a>
+        <button class="cabecalho-bars" id="btn-bars">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="cabecalho-menu">
+            <li class="cabecalho-menu-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li class="cabecalho-menu-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-scroll"></i>
+                    <p>Sobre a Técnica</p>
+                </a>
+            </li>
+            <li class="cabecalho-menu-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-list-check"></i>
+                    <p>Tarefas</p>
+                </a>
+            </li>
+            <li class="cabecalho-menu-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-question"></i>
+                    <p>Ajuda/FAQ</p>
+                </a>
+            </li>
+        </ul>
+        <div class="cabecalho-modo">
+            <label for="alterarModo">Alterar Modo</label>
+            <input type="checkbox" name="alterarModo" id="alterarModo" checked>
+        </div>
+        <div class="cabecalho-erro">
+            <a href="https://wa.me/5543988252886?text=Erro+no+projeto+pomodoro">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>Reportar Erro</p>
+            </a>
+        </div>
+    </header>
+
+    <main class="principal">
+        <div class="principal-banner">
+            <!-- https://storyset.com/illustration/online-learning/amico/animate -->
+            <img class="principal-banner-imagem" src="./assets/imgs/background.svg"
+                alt="mulher sentada em uma mesa olhando para a tela estundando">
+            <h3 class="principal-banner-texto" id="textoTitulo">Foco, disciplina, produtividade. Vamos nessa! Utilize
+                nossa ferramenta para extrair de você seu potencial máximo!</h3>
+            <a href="#ancorar" class="principal-banner-ancora"><i class="fa-solid fa-angles-down"></i></a>
+        </div>
+
+        <!-- #PENSAR EM UMA IMPLEMENTAÇÃO -->
+        <!-- <div class="principal-frases">
+            Estude <span class="principal-frases-frase"></span>
+        </div> -->
+
+        <div class="principal-timers" id="ancorar">
+            <div class="principal-timers-botoes">
+                <button class="principal-timers-botoes-btn botao-ativo" data-tipo="ciclo"
+                    data-tempo="1500">Ciclo</button>
+                <button class="principal-timers-botoes-btn" data-tipo="descanso-curto" data-tempo="300">Descanso
+                    Curto</button>
+                <button class="principal-timers-botoes-btn" data-tipo="descanso-longo" data-tempo="900">Descanso
+                    Longo</button>
+            </div>
+            <div class="principal-timers-relogio">
+                <div class="relogio">
+                    <div class="relogio-circulo">
+                        <div class="relogio-circulo-dot tempo-dot"></div>
+                        <svg>
+                            <circle cx="90" cy="90" r="90"></circle>
+                            <circle cx="90" cy="90" r="90" id="tt"></circle>
+                        </svg>
+                        <div id="tempo" class="relogio-circulo-tempo">00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="principal-tarefas">
+            <h2 class="principal-tarefas-titulo">Lista de Tarefas</h2>
+            <ul class="principal-tarefas-lista"></ul>
+            <button type="button" class="principal-tarefas-adicionarNovaTarefa" id="adicionarNovaTarefa">Adicionar Nova
+                Tarefa</button>
+            <form class="principal-tarefas-formulario" id="principalTarefasFormulario">
+                <label for="tituloTarefa" class="principal-tarefas-formulario-titulo">Titulo da tarefa:</label>
+                <input type="text" name="tituloTarefa" id="tituloTarefa">
+                <label for="descricaoTarefa" class="principal-tarefas-formulario-descricao">Descrição/Resumo da
+                    Tarefa</label>
+                <textarea name="descricaoTarefa" id="descricaoTarefa" rows="8"></textarea>
+
+                <div class="principal-tarefas-formulario-topicos">
+                    <button class="principal-tarefas-formulario-topicos-botao" id="btnAdicionarTopico"
+                        type="button">Adicionar Novo Tópico <i class="fa-solid fa-plus"></i></button>
+                    <div id="containerInserirTopico">
+                        <input type="text" class="principal-tarefas-formulario-topicos-input"
+                            name="inputAdicionarTopico" id="inputAdicionarTopico" placeholder="Digite o novo tópico">
+                        <button class="principal-tarefas-formulario-topicos-botao" id="btnAdicionarTopicoNaLista"
+                            type="button">Adicionar Novo Tópico <i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <ul class="principal-tarefas-formulario-topicos-lista"></ul>
+                <button type="submit" class="principal-tarefas-formulario-adicionarTarefaFinal">Adicionar
+                    Tarefa</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        Projeto desenvolvido por <strong>Dimi Endrix Martins Miranda</strong>, utilizando conceitos de HTML, CSS(SASS) e JavaScript com foco em manipulação de DOM e LocalStorage.
+    </footer>
+
+    <div class="offcanvas-bars" id="offcanvas-bars">
+        <div class="offcanvas-bars-titulo">
+            <h2>Menu</h2>
+        </div>
+        <ul class="offcanvas-bars-link">
+            <li class="offcanvas-bars-link-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-house"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li class="offcanvas-bars-link-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-scroll"></i>
+                    <p>Sobre a Técnica</p>
+                </a>
+            </li>
+            <li class="offcanvas-bars-link-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-list-check"></i>
+                    <p>Tarefas</p>
+                </a>
+            </li>
+            <li class="offcanvas-bars-link-item">
+                <a href="#" class="">
+                    <i class="fa-solid fa-question"></i>
+                    <p>Ajuda/FAQ</p>
+                </a>
+            </li>
+            <li class="offcanvas-bars-link-item">
+                <input type="checkbox" name="alterarModo" id="alterarModo" checked>
+                <label for="alterarModo">Alterar Modo</label>
+            </li>
+        </ul>
+        <div class="offcanvas-bars-erro">
+            <a href="https://wa.me/5543988252886?text=Erro+no+projeto+pomodoro">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>Achou algum erro? Entre em contato!</p>
+            </a>
+        </div>
+        <button class="offcanvas-bars-btnfechar" id="offcanvas-bars-btnfechar">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </button>
+    </div>
+
+    <script src="./script/offcanvas-bars.js"></script>
+    <script src="./script/efeitoMaquinaDeEscrever.js"></script>
+    <script src="./script/botaoAtivo.js"></script>
+    <script src="./script/tarefas/adicionarTopicoCriarTarefa.js"></script>
+    <script src="./script/darkMode.js"></script>
+    <script type="module" src="./script/relogio.js"></script>
+    <script type="module" src="./script/tarefas/tarefas.js"></script>
+</body>
+
+</html>
