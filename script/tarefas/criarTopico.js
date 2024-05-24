@@ -9,11 +9,22 @@ export function criarTopico(e) {
     const li = document.createElement('li')
     li.classList.add('principal-tarefas-lista-item-detalhes-lista-item')
     li.id = gerarId()
+    const disco = document.createElement('span')
+    disco.innerHTML = '<i class="fa-solid fa-circle"></i>'
     const p = document.createElement('p')
     p.innerHTML = input.value
+    
+    const containerBtns = document.createElement('div')
+
     const btnExcluir = document.createElement('button')
     btnExcluir.type = 'button'
     btnExcluir.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>'
+    const btnAlterar = document.createElement('button')
+    btnAlterar.type = 'button'
+    btnAlterar.innerHTML = '<i class="fa-solid fa-pencil"></i>'
+
+    containerBtns.appendChild(btnAlterar)
+    containerBtns.appendChild(btnExcluir)
 
     const listaDeTopicos = e.target.closest('.principal-tarefas-lista-item').querySelector('.principal-tarefas-lista-item-detalhes-lista')
     listaDeTopicos.style.display = 'flex'
@@ -34,8 +45,15 @@ export function criarTopico(e) {
 
     })
 
+    // PRECISO IMPLEMENTAR AQ
+    btnAlterar.addEventListener('click', (e) =>{
+        e.preventDefault()
+        console.log('teste')
+    })
+
+    li.appendChild(disco)
     li.appendChild(p)
-    li.appendChild(btnExcluir)
+    li.appendChild(containerBtns)
 
 
 

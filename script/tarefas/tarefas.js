@@ -98,6 +98,24 @@ function criarTarefa(objetoInformacoesTarefa) {
     })
 
     const btnAlterar = criarElemento('button', 'principal-tarefas-lista-item-alterar', '<i class="fa-regular fa-pen-to-square"></i>')
+    btnAlterar.addEventListener('click', (e) => {
+        const tarefaAtual = e.target.closest('.principal-tarefas-lista-item')
+
+        if (btnAlterar.classList.contains('btn-alterar-ativo')) {
+            console.log('nao tem')
+            btnAlterar.classList.remove('btn-alterar-ativo')
+            const alterarFormulario = tarefaAtual.children[tarefaAtual.children.length - 1]
+            alterarFormulario.remove()
+        } else {
+            console.log('tem')
+            btnAlterar.classList.add('btn-alterar-ativo')
+            const form = criarFormularioAlterarTarefa()
+            const formElemento = form.outerHTML
+            tarefaAtual.insertAdjacentHTML("beforeend", formElemento);
+            adicionarEventoNoFormulario(objetoInformacoesTarefa)
+        }
+    })
+
     const btnTopicos = criarElemento('button', 'principal-tarefas-lista-item-topicos', '<i class="fa-solid fa-heart"></i>')
     divContainer.appendChild(btnConcluir)
     divContainer.appendChild(btnExcluir)
@@ -117,11 +135,20 @@ function criarTarefa(objetoInformacoesTarefa) {
         divConteudoDetalhesTitulo2.style.display = 'block'
         objetoInformacoesTarefa.listaDeTopicos.forEach(itemTopico => {
             const li = criarElemento('li', 'principal-tarefas-lista-item-detalhes-lista-item', '', itemTopico.id)
+            const disco = document.createElement('span')
+            disco.innerHTML = '<i class="fa-solid fa-circle"></i>'
             const p = document.createElement('p')
             p.innerHTML = itemTopico.conteudoTopico
+
+            const containerBtns = document.createElement('div')
             const btnExcluir = document.createElement('button')
             btnExcluir.type = 'button'
             btnExcluir.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>'
+            const btnAlterar = document.createElement('button')
+            btnAlterar.type = 'button'
+            btnAlterar.innerHTML = '<i class="fa-solid fa-pencil"></i>'
+            containerBtns.appendChild(btnAlterar)
+            containerBtns.appendChild(btnExcluir)
 
             btnExcluir.addEventListener('click', (e) => {
                 e.preventDefault()
@@ -138,8 +165,28 @@ function criarTarefa(objetoInformacoesTarefa) {
                 topico.remove()
                 escreverInformacoesNoLocalStorage()
             })
+
+            // PRECISO IMPLEMENTAR AQUI
+            btnAlterar.addEventListener('click', (e) => {
+                e.preventDefault()
+                const formularioAlterarTopico = criarFormularioAlterarTopico()
+                const li = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item')
+                
+                if(btnAlterar.classList.contains('alterarTopicoAtivo')){
+                    console.log('btn desativado')
+                    btnAlterar.classList.remove('alterarTopicoAtivo')
+                    const formularioAlterarTopico = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item').querySelector('.alterarTopico')
+                    formularioAlterarTopico.remove()
+                }else{
+                    btnAlterar.classList.add('alterarTopicoAtivo')
+                    console.log('btn ativado')
+                    li.appendChild(formularioAlterarTopico)
+                }
+                
+            })
+            li.appendChild(disco)
             li.appendChild(p)
-            li.appendChild(btnExcluir)
+            li.appendChild(containerBtns)
             listaDeTopicos.appendChild(li)
         })
     } else {
@@ -205,16 +252,91 @@ function ocultarListaDeTopicos(listaDeTopicos) {
     }
 }
 
-function verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btnVerDetalhes){
+function verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btnVerDetalhes) {
     if (objetoInformacoesTarefa.tarefaConcluida === true) {
         itemTarefa.classList.add('concluido')
         btnVerDetalhes.classList.add('concluido')
         arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)].tarefaConcluida = true
     } else if (objetoInformacoesTarefa.tarefaConcluida === false) {
-        if(arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)]){
+        if (arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)]) {
             arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)].tarefaConcluida = false
         }
         btnVerDetalhes.classList.remove('concluido')
         itemTarefa.classList.remove('concluido')
     }
+}
+
+function criarFormularioAlterarTarefa() {
+    const form = criarElemento('form', 'principal-tarefas-lista-item-detalhes-formularioAlterarTarefa')
+    const labelNovoTituloTarefa = criarElemento('label', 'formularioAlterarTarefa-titulo-tarefa-label', 'Novo titulo da tarefa')
+    labelNovoTituloTarefa.setAttribute('for', 'novoTituloTarefa')
+    const inputNovoTituloTarefa = criarElemento('input', 'formularioAlterarTarefa-titulo-tarefa-input', '', 'novoTituloTarefa')
+    inputNovoTituloTarefa.type = 'text'
+    const labelNovaDescricaoTarefa = criarElemento('label', 'formularioAlterarTarefa-descricao-tarefa-label', 'Nova Descrição/Resumo da Tarefa')
+    labelNovaDescricaoTarefa.setAttribute('for', 'novaDescricaoTarefa')
+    const textareaDescricaoTarefa = criarElemento('textarea', 'formularioAlterarTarefa-descricao-tarefa-textarea', '', 'novaDescricaoTarefa')
+    const btnNovoAlterarTarefa = criarElemento('button', 'formularioAlterarTarefa-descricao-tarefa-btnAlterarTarefa', 'Alterar Tarefa')
+    btnNovoAlterarTarefa.setAttribute('type', 'submit')
+
+
+    form.appendChild(labelNovoTituloTarefa)
+    form.appendChild(inputNovoTituloTarefa)
+    form.appendChild(labelNovaDescricaoTarefa)
+    form.appendChild(textareaDescricaoTarefa)
+    form.appendChild(btnNovoAlterarTarefa)
+
+    return form
+}
+
+function adicionarEventoNoFormulario(objetoInformacoesTarefa) {
+    const form = document.querySelector('.principal-tarefas-lista-item-detalhes-formularioAlterarTarefa')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const liPai = e.target.closest('.principal-tarefas-lista-item')
+        const novoTitulo = e.target.querySelector('.formularioAlterarTarefa-titulo-tarefa-input')
+        const novaDescricao = e.target.querySelector('.formularioAlterarTarefa-descricao-tarefa-textarea')
+        const objetoTarefaAterado = {
+            descricaoTarefa: novaDescricao.value,
+            id: objetoInformacoesTarefa.id,
+            listaDeTopicos: objetoInformacoesTarefa.listaDeTopicos,
+            tarefaConcluida: objetoInformacoesTarefa.tarefaConcluida,
+            tituloTarefa: novoTitulo.value,
+        }
+        arrayTarefas[acharElementoDentroDoArrayPeloId(liPai.id)] = objetoTarefaAterado
+        escreverInformacoesNoLocalStorage()
+
+        // Alterando dados visuais
+        liPai.querySelector('.principal-tarefas-lista-item-titulo').innerHTML = objetoTarefaAterado.tituloTarefa
+        liPai.querySelector('.principal-tarefas-lista-item-detalhes-descricao').innerHTML = objetoTarefaAterado.descricaoTarefa
+
+        const liBtnAlterar = liPai.querySelector(".btn-alterar-ativo")
+        liBtnAlterar.classList.remove('btn-alterar-ativo')
+        form.remove()
+    })
+}
+
+function criarFormularioAlterarTopico() {
+    const input = document.createElement('input')
+    input.type = 'text'
+    input.placeholder = 'Informe o novo tópico'
+
+    const btnSalvar = document.createElement('button')
+    btnSalvar.innerHTML = 'Salvar'
+
+    // AINDA NÃO ESTA ESCREVENDO NO LOCALSTORAGE
+    btnSalvar.addEventListener('click', (e) => {
+        e.preventDefault()
+        const input = e.target.closest('.alterarTopico').querySelector('input') 
+        const liPai = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item')
+        liPai.querySelector('p').innerHTML = input.value
+        e.target.closest('.alterarTopico').remove()
+    })
+
+
+    const div = document.createElement('div')
+    div.classList.add('alterarTopico')
+    div.appendChild(input)
+    div.appendChild(btnSalvar)
+
+    return div
 }

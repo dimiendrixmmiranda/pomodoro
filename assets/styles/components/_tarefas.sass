@@ -53,6 +53,7 @@
                     text-align: center
                     color: $branco
                     box-shadow: 0 0 1px 1px $preto
+                    cursor: pointer
                 .principal-tarefas-lista-item-concluir
                     background-color: green
                 .principal-tarefas-lista-item-excluir
@@ -88,21 +89,57 @@
                         display: block
                 .principal-tarefas-lista-item-detalhes-lista
                     list-style-type: disc
-                    margin-left: 1.2em
                     margin-top: .6em
                     line-height: 1.2
                     display: flex
                     flex-direction: column
                     row-gap: .5em
-                    li
+                    .principal-tarefas-lista-item-detalhes-lista-item
                         display: grid
-                        grid-template-columns: 1fr 20px
-                        button
-                            background-color: transparent
-                            border: none
-                            cursor: pointer
-                            color: $branco
-                            font-size: 1.1em
+                        grid-template-columns: 15px 1fr 20px
+                        grid-template-rows: 1fr auto
+                        row-gap: .4em
+                        background-color: $azul-5
+                        border-radius: 4px
+                        span
+                            align-self: center
+                            justify-self: center
+                            display: flex
+                            justify-content: center
+                            align-items: center
+                            margin-top: .2em
+                            i
+                                font-size: .5em
+                        p
+                            padding-left: .5em
+                            align-self: center
+                        .alterarTopico
+                            grid-row: 2/3
+                            grid-column: 1/5
+                            display: grid
+                            grid-template-columns: 80% 1fr
+                            padding: 0 .2em
+                            width: 100%
+                            height: 25px
+                            input
+                                height: 22px
+                        div
+                            display: grid
+                            grid-template-rows: repeat(2, 1fr)
+                            row-gap: .2em
+                            button
+                                cursor: pointer
+                                border-radius: 4px
+                                border: none
+                                padding: .1em 0
+                                box-shadow: 0 0 2px 1px $preto
+                                &:first-child
+                                    background-color: $amarelo
+                                &:last-child
+                                    background-color: $vermelho-2
+                                    color: $branco
+                                i
+                                    font-size: .8em
                 .principal-tarefas-lista-item-detalhes-botao
                     width: 100%
                     font-size: 1em
@@ -135,6 +172,32 @@
                         color: $branco
                         border: none
                         outline: none
+            .principal-tarefas-lista-item-detalhes-formularioAlterarTarefa
+                grid-column: 1/3
+                display: flex
+                flex-direction: column
+                padding: .5em 1em
+                .formularioAlterarTarefa-titulo-tarefa-label, .formularioAlterarTarefa-descricao-tarefa-label
+                    font-size: 1.2em
+                    font-weight: 600
+                .formularioAlterarTarefa-descricao-tarefa-label
+                    margin-top: .6em
+                .formularioAlterarTarefa-titulo-tarefa-input
+                    height: 25px
+                    padding: 0 .5em
+                .formularioAlterarTarefa-descricao-tarefa-textarea
+                    height: 140px
+                    padding: .5em
+                .formularioAlterarTarefa-descricao-tarefa-btnAlterarTarefa
+                    font-weight: bold
+                    padding: .3em 0
+                    margin-top: .6em
+                    background-color: $azul-1
+                    border: none
+                    outline: none
+                    color: $branco
+                    cursor: pointer
+                    font-size: 1.4em
     .principal-tarefas-adicionarNovaTarefa
         width: 100%
         padding: .8em 0

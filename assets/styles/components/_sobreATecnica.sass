@@ -1,0 +1,112 @@
+@import '../abstract/_variaveis'
+.sobre
+    font-family: $fonte-secundaria
+    padding: .5em 1em
+    color: $branco
+    .sobre-titulo
+        text-align: center
+        font-size: 1.4em
+        margin-bottom: .6em
+    .sobre-p
+        line-height: 1.1
+        text-indent: 1.5em
+        margin-bottom: .8em
+    .sobre-imagem
+        width: 100%
+        margin-bottom: .8em
+        img
+            width: 100%
+            border-radius: 12px
+            box-shadow: 4px 4px 2px 1px $preto
+    .sobre-estrutura
+        width: 100%
+        margin-bottom: .8em
+        img
+            width: 100%
+    .sobre-lista
+        display: flex
+        flex-direction: column
+        margin-bottom: 1em
+        row-gap: .8em
+        list-style-type: none
+        .sobre-lista-titulo
+            font-size: 1em
+            line-height: 1.25
+            font-weight: 500
+        .sobre-lista-item
+            font-weight: 400
+            line-height: 1.1
+            i
+                font-size: .6em
+                padding: 0 5px 0 0
+@media screen and ( min-width: 375px )
+    .sobre
+        padding: 1em 1.5em
+@media screen and ( min-width: 425px )
+    .sobre
+        padding: 1em 1.5em
+        .sobre-titulo
+            font-size: 1.8em
+        .sobre-imagem
+            max-width: 380px
+            margin: 0 auto
+        .sobre-lista
+            .sobre-lista-titulo
+                font-size: 1.2em
+            .sobre-lista-item
+                font-size: 1.1em
+@media screen and ( min-width: 768px )
+    .sobre
+        display: grid
+        grid-template-columns: 1fr 1fr
+        padding: 1em 1.5em
+        .sobre-titulo
+            font-size: 1.8em
+            grid-column: 1/3
+        .sobre-p
+            font-size: 1.3em
+        .sobre-imagem
+            max-width: 80%
+            margin: 0 auto 1em auto
+            align-self: center
+        .sobre-lista
+            grid-column: 1/3
+            .sobre-lista-titulo
+                font-size: 1.2em
+            .sobre-lista-item
+                font-size: 1.1em
+        .sobre-estrutura
+            grid-column: 1/3
+            max-width: 80%
+            margin: 0 auto
+@media screen and ( min-width: 1024px )
+    .sobre
+        padding: 1.5em 2.5em 2em 2.5em
+        .sobre-titulo
+            font-size: 2em
+        .sobre-p
+            font-size: 1.5em
+        .sobre-imagem
+            max-width: 335px
+        .sobre-estrutura
+            max-width: 760px
+        .sobre-lista
+            .sobre-lista-titulo
+                font-size: 1.5em
+            .sobre-lista-item
+                font-size: 1.3em
+@media screen and ( min-width: 1440px )
+    .sobre
+        padding: 1.5em 4em 3.5em 4em
+        .sobre-titulo
+            font-size: 2.5em
+        .sobre-p
+            font-size: 1.7em
+        .sobre-lista
+            .sobre-lista-titulo
+                font-size: 1.8em
+                margin-bottom: .6em
+            .sobre-lista-item
+                font-size: 1.6em
+                i
+                    padding: 0 12px 0 0
