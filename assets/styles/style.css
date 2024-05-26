@@ -1335,6 +1335,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   }
   .principal .principal-timers {
     grid-column: 1/2;
+    align-self: center;
   }
   .principal .principal-tarefas {
     grid-column: 2/3;
