@@ -97,7 +97,8 @@
                     .principal-tarefas-lista-item-detalhes-lista-item
                         display: grid
                         grid-template-columns: 15px 1fr 20px
-                        grid-template-rows: 1fr auto
+                        padding: .2em
+                        // grid-template-rows: 1fr auto
                         row-gap: .4em
                         background-color: $azul-5
                         border-radius: 4px
@@ -133,13 +134,14 @@
                                 border: none
                                 padding: .1em 0
                                 box-shadow: 0 0 2px 1px $preto
+                                color: $branco
                                 &:first-child
-                                    background-color: $amarelo
+                                    background-color: orangered
                                 &:last-child
                                     background-color: $vermelho-2
-                                    color: $branco
                                 i
                                     font-size: .8em
+                                    margin-bottom: .2em
                 .principal-tarefas-lista-item-detalhes-botao
                     width: 100%
                     font-size: 1em
@@ -178,7 +180,7 @@
                 flex-direction: column
                 padding: .5em 1em
                 .formularioAlterarTarefa-titulo-tarefa-label, .formularioAlterarTarefa-descricao-tarefa-label
-                    font-size: 1.2em
+                    font-size: 1.1em
                     font-weight: 600
                 .formularioAlterarTarefa-descricao-tarefa-label
                     margin-top: .6em

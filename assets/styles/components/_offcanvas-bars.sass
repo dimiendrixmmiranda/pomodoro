@@ -2,18 +2,19 @@
 .offcanvas-bars
     width: 90%
     height: 100vh
+    position: fixed
     background-color: $azul-3
     box-shadow: 0 0 5px 2px $preto
-    position: fixed
-    transition: opacity 2s
-    top: 0
-    right: 0
     display: none
+    transition: .6s ease
+    top: 0
+    left: 100%
+    animation: $animacaoOffCanvasAbrir
     grid-template-columns: 80% 1fr
     grid-template-rows: 50px 1fr auto
     font-family: $fonte-secundaria
     padding: .5em
-    z-index: 20
+    z-index: 0
     .offcanvas-bars-titulo
         grid-row: 1/2
         color: $branco

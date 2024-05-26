@@ -6,11 +6,10 @@ btnBars.addEventListener('click', fadeIn)
 offcanvasBarsBtnFechar.addEventListener('click', fadeOut)
 
 function fadeIn(){
-    console.log(offcanvasBars)
     offcanvasBars.style.display = 'grid'
+    offcanvasBars.style.left = '10%'
 }
 
 function fadeOut(){
-    const offcanvasBars = document.querySelector('#offcanvas-bars')
-    offcanvasBars.style.display = 'none'
+    offcanvasBars.style.left = '100%'
 }

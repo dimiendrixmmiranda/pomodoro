@@ -70,6 +70,12 @@ function criarTarefa(objetoInformacoesTarefa) {
 
     const divContainer = criarElemento('div', 'principal-tarefas-lista-item-container')
     const btnConcluir = criarElemento('button', 'principal-tarefas-lista-item-concluir', '<i class="fa-solid fa-check"></i>')
+    
+    const divConteudoDetalhes = criarElemento('div', 'principal-tarefas-lista-item-detalhes')
+    const divConteudoDetalhesTitulo1 = criarElemento('h4', 'principal-tarefas-lista-item-detalhes-titulo', 'Descrição/Resumo')
+    const divConteudoDetalhesDescricao = criarElemento('p', 'principal-tarefas-lista-item-detalhes-descricao', objetoInformacoesTarefa.descricaoTarefa)
+    const divConteudoDetalhesTitulo2 = criarElemento('h4', 'principal-tarefas-lista-item-detalhes-titulo', 'Tópicos')
+    const listaDeTopicos = criarElemento('ul', 'principal-tarefas-lista-item-detalhes-lista')
     btnConcluir.addEventListener('click', (e) => {
         e.preventDefault()
 
@@ -79,11 +85,13 @@ function criarTarefa(objetoInformacoesTarefa) {
             const li = e.target.closest('.principal-tarefas-lista-item')
             li.classList.add('concluido')
             btnVerDetalhes.classList.add('concluido')
+            listaDeTopicos.querySelectorAll('li').forEach(li => li.classList.add('concluido'))
             arrayTarefas[acharElementoDentroDoArrayPeloId(li.id)].tarefaConcluida = true
         } else if (objetoInformacoesTarefa.tarefaConcluida === true) {
             arrayTarefas[acharElementoDentroDoArrayPeloId(li.id)].tarefaConcluida = false
             btnVerDetalhes.classList.remove('concluido')
             li.classList.remove('concluido')
+            listaDeTopicos.querySelectorAll('li').forEach(li => li.classList.remove('concluido'))
         }
         escreverInformacoesNoLocalStorage()
     })
@@ -125,16 +133,11 @@ function criarTarefa(objetoInformacoesTarefa) {
     const btnVerDetalhes = criarElemento('button', 'principal-tarefas-lista-item-btnDetelhes', 'Ver Detalhes')
     btnVerDetalhesAtivo(btnVerDetalhes)
 
-    const divConteudoDetalhes = criarElemento('div', 'principal-tarefas-lista-item-detalhes')
-    const divConteudoDetalhesTitulo1 = criarElemento('h4', 'principal-tarefas-lista-item-detalhes-titulo', 'Descrição/Resumo')
-    const divConteudoDetalhesDescricao = criarElemento('p', 'principal-tarefas-lista-item-detalhes-descricao', objetoInformacoesTarefa.descricaoTarefa)
-    const divConteudoDetalhesTitulo2 = criarElemento('h4', 'principal-tarefas-lista-item-detalhes-titulo', 'Tópicos')
-    const listaDeTopicos = criarElemento('ul', 'principal-tarefas-lista-item-detalhes-lista')
-
     if (objetoInformacoesTarefa.listaDeTopicos.length > 0) {
         divConteudoDetalhesTitulo2.style.display = 'block'
         objetoInformacoesTarefa.listaDeTopicos.forEach(itemTopico => {
             const li = criarElemento('li', 'principal-tarefas-lista-item-detalhes-lista-item', '', itemTopico.id)
+            li.id = itemTopico.idTopico
             const disco = document.createElement('span')
             disco.innerHTML = '<i class="fa-solid fa-circle"></i>'
             const p = document.createElement('p')
@@ -147,6 +150,7 @@ function criarTarefa(objetoInformacoesTarefa) {
             const btnAlterar = document.createElement('button')
             btnAlterar.type = 'button'
             btnAlterar.innerHTML = '<i class="fa-solid fa-pencil"></i>'
+            btnAlterar.id = 'alterarTopicoAtual'
             containerBtns.appendChild(btnAlterar)
             containerBtns.appendChild(btnExcluir)
 
@@ -169,9 +173,9 @@ function criarTarefa(objetoInformacoesTarefa) {
             // PRECISO IMPLEMENTAR AQUI
             btnAlterar.addEventListener('click', (e) => {
                 e.preventDefault()
-                const formularioAlterarTopico = criarFormularioAlterarTopico()
+                const idLiTarefaPai = e.target.closest('.principal-tarefas-lista-item').id
                 const li = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item')
-                
+                const formularioAlterarTopico = criarFormularioAlterarTopico(idLiTarefaPai)
                 if(btnAlterar.classList.contains('alterarTopicoAtivo')){
                     console.log('btn desativado')
                     btnAlterar.classList.remove('alterarTopicoAtivo')
@@ -219,7 +223,7 @@ function criarTarefa(objetoInformacoesTarefa) {
 
     escreverInformacoesNoLocalStorage()
 
-    verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btnVerDetalhes)
+    verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btnVerDetalhes, listaDeTopicos)
 
     return itemTarefa
 }
@@ -252,8 +256,9 @@ function ocultarListaDeTopicos(listaDeTopicos) {
     }
 }
 
-function verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btnVerDetalhes) {
+function verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btnVerDetalhes, listaDeTopicos) {  
     if (objetoInformacoesTarefa.tarefaConcluida === true) {
+        listaDeTopicos.querySelectorAll('li').forEach(li => li.classList.add('concluido'))
         itemTarefa.classList.add('concluido')
         btnVerDetalhes.classList.add('concluido')
         arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)].tarefaConcluida = true
@@ -261,6 +266,7 @@ function verificarSeATarefaFoiConcluida(objetoInformacoesTarefa, itemTarefa, btn
         if (arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)]) {
             arrayTarefas[acharElementoDentroDoArrayPeloId(itemTarefa.id)].tarefaConcluida = false
         }
+        listaDeTopicos.querySelectorAll('li').forEach(li => li.classList.remove('concluido'))
         btnVerDetalhes.classList.remove('concluido')
         itemTarefa.classList.remove('concluido')
     }
@@ -315,7 +321,7 @@ function adicionarEventoNoFormulario(objetoInformacoesTarefa) {
     })
 }
 
-function criarFormularioAlterarTopico() {
+function criarFormularioAlterarTopico(idLiTarefaPai) {
     const input = document.createElement('input')
     input.type = 'text'
     input.placeholder = 'Informe o novo tópico'
@@ -330,6 +336,21 @@ function criarFormularioAlterarTopico() {
         const liPai = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item')
         liPai.querySelector('p').innerHTML = input.value
         e.target.closest('.alterarTopico').remove()
+        const idLiTopico = liPai.id 
+        const idLiTarefa = idLiTarefaPai
+    
+        const listaDeTopicos = arrayTarefas[acharElementoDentroDoArrayPeloId(idLiTarefa)].listaDeTopicos
+        const topicoAlterar = listaDeTopicos.findIndex(elemento => elemento.idTopico === idLiTopico)
+        
+        const dadosDoNovoTopico = {
+            conteudoTopico: input.value,
+            idTopico: idLiTopico
+        }
+        listaDeTopicos[topicoAlterar] = dadosDoNovoTopico
+        console.log(listaDeTopicos)
+
+        // removendo botaoAtivoTopico
+        liPai.querySelector('#alterarTopicoAtual').classList.remove('alterarTopicoAtivo')
     })
 
 

@@ -36,6 +36,16 @@
     transform: translateY(-10px);
   }
 }
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -100,6 +110,16 @@ body::-webkit-scrollbar-thumb {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
   }
 }
 .cabecalho {
@@ -326,21 +346,32 @@ body::-webkit-scrollbar-thumb {
     transform: translateY(-10px);
   }
 }
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
 .offcanvas-bars {
   width: 90%;
   height: 100vh;
+  position: fixed;
   background-color: #03056e;
   box-shadow: 0 0 5px 2px #000000;
-  position: fixed;
-  transition: opacity 2s;
-  top: 0;
-  right: 0;
   display: none;
+  transition: 0.6s ease;
+  top: 0;
+  left: 100%;
+  animation: offcanvasAbrir 0.6s ease;
   grid-template-columns: 80% 1fr;
   grid-template-rows: 50px 1fr auto;
   font-family: "Oswald", sans-serif;
   padding: 0.5em;
-  z-index: 20;
+  z-index: 0;
 }
 .offcanvas-bars .offcanvas-bars-titulo {
   grid-row: 1/2;
@@ -481,6 +512,16 @@ body::-webkit-scrollbar-thumb {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
   }
 }
 main .principal-banner {
@@ -649,6 +690,16 @@ main .principal-banner .principal-banner-ancora {
     transform: translateY(-10px);
   }
 }
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
 main .principal-timers {
   max-width: 95%;
   margin: 1.5em auto;
@@ -764,6 +815,16 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
     transform: translateY(-10px);
   }
 }
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
 .relogio {
   display: flex;
   gap: 40px;
@@ -853,6 +914,16 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
     transform: translateY(-10px);
   }
 }
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
 .principal-frases {
   overflow: hidden;
   font-family: "Oswald", sans-serif;
@@ -905,6 +976,16 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
   }
 }
 .principal-tarefas {
@@ -1022,7 +1103,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes .principal-tarefas-lista-item-detalhes-lista .principal-tarefas-lista-item-detalhes-lista-item {
   display: grid;
   grid-template-columns: 15px 1fr 20px;
-  grid-template-rows: 1fr auto;
+  padding: 0.2em;
   row-gap: 0.4em;
   background-color: #2528d1;
   border-radius: 4px;
@@ -1065,16 +1146,17 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   border: none;
   padding: 0.1em 0;
   box-shadow: 0 0 2px 1px #000000;
+  color: #ffffff;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes .principal-tarefas-lista-item-detalhes-lista .principal-tarefas-lista-item-detalhes-lista-item div button:first-child {
-  background-color: #fbff08;
+  background-color: orangered;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes .principal-tarefas-lista-item-detalhes-lista .principal-tarefas-lista-item-detalhes-lista-item div button:last-child {
   background-color: #D71313;
-  color: #ffffff;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes .principal-tarefas-lista-item-detalhes-lista .principal-tarefas-lista-item-detalhes-lista-item div button i {
   font-size: 0.8em;
+  margin-bottom: 0.2em;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes .principal-tarefas-lista-item-detalhes-botao {
   width: 100%;
@@ -1120,7 +1202,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   padding: 0.5em 1em;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes-formularioAlterarTarefa .formularioAlterarTarefa-titulo-tarefa-label, .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes-formularioAlterarTarefa .formularioAlterarTarefa-descricao-tarefa-label {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-detalhes-formularioAlterarTarefa .formularioAlterarTarefa-descricao-tarefa-label {
@@ -1286,6 +1368,16 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
     transform: translateY(-10px);
   }
 }
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
 .rodape {
   background-color: #D71313;
   padding: 0.5em;
@@ -1338,6 +1430,16 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
   }
 }
 .sobre {

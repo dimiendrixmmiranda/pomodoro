@@ -13,13 +13,14 @@ export function criarTopico(e) {
     disco.innerHTML = '<i class="fa-solid fa-circle"></i>'
     const p = document.createElement('p')
     p.innerHTML = input.value
-    
+
     const containerBtns = document.createElement('div')
 
     const btnExcluir = document.createElement('button')
     btnExcluir.type = 'button'
     btnExcluir.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>'
     const btnAlterar = document.createElement('button')
+    btnAlterar.id = 'alterarTopicoAtual'
     btnAlterar.type = 'button'
     btnAlterar.innerHTML = '<i class="fa-solid fa-pencil"></i>'
 
@@ -46,9 +47,22 @@ export function criarTopico(e) {
     })
 
     // PRECISO IMPLEMENTAR AQ
-    btnAlterar.addEventListener('click', (e) =>{
+    btnAlterar.addEventListener('click', (e) => {
         e.preventDefault()
-        console.log('teste')
+        console.log('aq')
+        const idLiTarefaPai = e.target.closest('.principal-tarefas-lista-item').id
+        const li = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item')
+        const formularioAlterarTopico = criarFormularioAlterarTopico(idLiTarefaPai)
+        if (btnAlterar.classList.contains('alterarTopicoAtivo')) {
+            console.log('btn desativado')
+            btnAlterar.classList.remove('alterarTopicoAtivo')
+            const formularioAlterarTopico = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item').querySelector('.alterarTopico')
+            formularioAlterarTopico.remove()
+        } else {
+            btnAlterar.classList.add('alterarTopicoAtivo')
+            console.log('btn ativado')
+            li.appendChild(formularioAlterarTopico)
+        }
     })
 
     li.appendChild(disco)
@@ -73,4 +87,46 @@ export function criarTopico(e) {
     escreverInformacoesNoLocalStorage()
 
     input.value = ''
+}
+
+function criarFormularioAlterarTopico(idLiTarefaPai) {
+    const input = document.createElement('input')
+    input.type = 'text'
+    input.placeholder = 'Informe o novo tópico'
+
+    const btnSalvar = document.createElement('button')
+    btnSalvar.innerHTML = 'Salvar'
+
+    // AINDA NÃO ESTA ESCREVENDO NO LOCALSTORAGE
+    btnSalvar.addEventListener('click', (e) => {
+        e.preventDefault()
+        const input = e.target.closest('.alterarTopico').querySelector('input')
+        const liPai = e.target.closest('.principal-tarefas-lista-item-detalhes-lista-item')
+        liPai.querySelector('p').innerHTML = input.value
+        e.target.closest('.alterarTopico').remove()
+        const idLiTopico = liPai.id
+        const idLiTarefa = idLiTarefaPai
+
+        const listaDeTopicos = arrayTarefas[acharElementoDentroDoArrayPeloId(idLiTarefa)].listaDeTopicos
+        const topicoAlterar = listaDeTopicos.findIndex(elemento => elemento.idTopico === idLiTopico)
+
+        const dadosDoNovoTopico = {
+            conteudoTopico: input.value,
+            idTopico: idLiTopico
+        }
+        listaDeTopicos[topicoAlterar] = dadosDoNovoTopico
+        escreverInformacoesNoLocalStorage()
+        console.log(listaDeTopicos)
+
+        // removendo botaoAtivoTopico
+        liPai.querySelector('#alterarTopicoAtual').classList.remove('alterarTopicoAtivo')
+    })
+
+
+    const div = document.createElement('div')
+    div.classList.add('alterarTopico')
+    div.appendChild(input)
+    div.appendChild(btnSalvar)
+
+    return div
 }

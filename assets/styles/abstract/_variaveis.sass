@@ -31,6 +31,7 @@ $animacaoBarraTexto: piscar .9s ease infinite
 $animacaoCrescerBorda: crescerBordaBottom .8s ease-in-out
 
 $piscarCursor: piscarCursor .7s infinite
+$animacaoOffCanvasAbrir: offcanvasAbrir .6s ease
 
 @keyframes crescerBordaBottom
     0%
@@ -48,3 +49,10 @@ $piscarCursor: piscarCursor .7s infinite
         transform: translateY(0)
     50%
         transform: translateY(-10px)
+@keyframes offcanvasAbrir
+    0%
+        top: 0
+        left: 100%
+    100%
+        top: 0
+        left: 10%
