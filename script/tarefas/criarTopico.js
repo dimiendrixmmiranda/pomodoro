@@ -87,6 +87,7 @@ export function criarTopico(e) {
     escreverInformacoesNoLocalStorage()
 
     input.value = ''
+    input.focus()
 }
 
 function criarFormularioAlterarTopico(idLiTarefaPai) {

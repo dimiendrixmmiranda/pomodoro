@@ -8,6 +8,7 @@
 @import 'https://fonts.googleapis.com/css2?family=Freeman&family=Oswald:wght@200..700&family=Poetsen+One&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Freeman&family=Oswald:wght@200..700&family=Poetsen+One&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Freeman&family=Oswald:wght@200..700&family=Poetsen+One&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Freeman&family=Oswald:wght@200..700&family=Poetsen+One&display=swap';
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
@@ -705,6 +706,7 @@ main .principal-timers {
   margin: 1.5em auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 main .principal-timers .principal-timers-botoes {
   width: 100%;
@@ -1015,6 +1017,10 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   background-color: #01973d !important;
   box-shadow: 0 0 2px 1px #000000;
 }
+.principal-tarefas .principal-tarefas-lista .tarefaAtual {
+  background-color: #ffbc04 !important;
+  box-shadow: 0 0 2px 1px #000000;
+}
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item {
   background-color: #0002A1;
   width: 100%;
@@ -1022,6 +1028,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   display: grid;
   grid-template-rows: 50px 1fr;
   grid-template-columns: 1fr 50px;
+  text-shadow: 1px 1px 2px #000000;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-titulo {
   grid-column: 1/2;
@@ -1060,9 +1067,9 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-container .principal-tarefas-lista-item-alterar {
   background-color: orangered;
 }
-.principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-container .principal-tarefas-lista-item-topicos {
+.principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-container .principal-tarefas-lista-item-tarefaAtual {
   background-color: orange;
-  color: #000000;
+  color: #C40C0C;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-btnDetelhes {
   grid-row: 2/3;
@@ -1074,6 +1081,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   background-color: #03056e;
   border: none;
   color: #ffffff;
+  text-shadow: 1px 1px 2px #000000;
   box-shadow: 1px 1px 2px #000000;
   cursor: pointer;
   border-top: solid 1px black;
@@ -1494,6 +1502,21 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   font-size: 0.6em;
   padding: 0 5px 0 0;
 }
+.sobre .sobre-lista-botoes {
+  display: flex;
+  -moz-column-gap: 0.5em;
+       column-gap: 0.5em;
+  justify-content: end;
+}
+.sobre .sobre-lista-botoes a {
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 0.2em 0.6em;
+  font-weight: bold;
+  background-color: #D71313;
+  color: #ffffff;
+  border-radius: 4px;
+}
 
 @media screen and (min-width: 375px) {
   .sobre {
@@ -1594,4 +1617,58 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   .sobre .sobre-lista .sobre-lista-item i {
     padding: 0 12px 0 0;
   }
+}
+@font-face {
+  font-family: "DSDIGI";
+  src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottom {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes piscarCursor {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes offcanvasAbrir {
+  0% {
+    top: 0;
+    left: 100%;
+  }
+  100% {
+    top: 0;
+    left: 10%;
+  }
+}
+.container-botao-parar {
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  white-space: nowrap;
+}
+.container-botao-parar button {
+  font-size: 2em;
+  padding: 0.2em 0.5em;
+  background-color: #D71313;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

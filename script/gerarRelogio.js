@@ -57,6 +57,9 @@ function criarElementoVisualDoRelogio(tempo) {
                 // TOCAR
                 audioDespertar.loop = true
                 audioDespertar.play()
+                const elementoPrincipalTimers = document.querySelector('.principal-timers')
+                const btnParar = criarBotaoDeParar()
+                elementoPrincipalTimers.appendChild(btnParar)
                 return
             }
             tempo -= 1
@@ -104,4 +107,19 @@ function inserirTempoNaTela(tempo) {
 function zerarIntervalo() {
     clearInterval(intervaloId)
     intervaloId = null
+}
+
+function criarBotaoDeParar(){
+    const div = document.createElement('div')
+    div.classList.add('container-botao-parar')
+    const button = document.createElement('button')
+    button.innerHTML = 'Parar Alarme!'
+    
+    button.addEventListener('click', (e) => {
+        e.preventDefault()
+        window.location.reload(true)
+    })
+    
+    div.appendChild(button)
+    return div
 }
