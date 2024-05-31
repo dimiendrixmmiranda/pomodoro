@@ -13,6 +13,14 @@
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
 }
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 @keyframes crescerBordaBottom {
   0% {
     width: 0;
@@ -74,7 +82,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 [data-tema=escuro] {
-  background: #0002A1;
+  background: #03056e;
 }
 
 [data-tema=claro] {
@@ -88,6 +96,14 @@ body::-webkit-scrollbar-thumb {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {
@@ -200,6 +216,7 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 100%;
     padding: 0 0.5em;
+    position: relative;
   }
   .cabecalho .cabecalho-menu .cabecalho-menu-item a {
     width: 100%;
@@ -212,6 +229,26 @@ body::-webkit-scrollbar-thumb {
     font-family: "Oswald", sans-serif;
     align-items: center;
     cursor: pointer;
+    padding: 0.2em 0.5em;
+  }
+  .cabecalho .cabecalho-menu .cabecalho-menu-item a:hover {
+    background-color: #ffffff;
+    transition: 0.6s ease;
+    border-radius: 6px;
+    color: #03056e;
+  }
+  .cabecalho .cabecalho-menu .cabecalho-menu-item a p {
+    position: relative;
+  }
+  .cabecalho .cabecalho-menu .cabecalho-menu-item a p:hover::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #C40C0C;
+    bottom: 0;
+    left: 0;
+    animation: crescerBordaBottomCurta 0.8s ease-in-out;
   }
   .cabecalho .cabecalho-modo {
     display: flex;
@@ -304,7 +341,7 @@ body::-webkit-scrollbar-thumb {
 }
 @media screen and (min-width: 1440px) {
   .cabecalho {
-    grid-template-columns: 1fr 65% 100px 70px;
+    grid-template-columns: 300px 1fr 100px 100px;
   }
   .cabecalho .cabecalho-menu {
     display: flex;
@@ -314,6 +351,7 @@ body::-webkit-scrollbar-thumb {
   }
   .cabecalho .cabecalho-menu .cabecalho-menu-item a {
     font-size: 1.4em;
+    padding: 0 0.5em;
   }
   .cabecalho .cabecalho-modo {
     margin-right: 3em;
@@ -322,6 +360,14 @@ body::-webkit-scrollbar-thumb {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {
@@ -361,7 +407,7 @@ body::-webkit-scrollbar-thumb {
   width: 90%;
   height: 100vh;
   position: fixed;
-  background-color: #03056e;
+  background-color: #020366;
   box-shadow: 0 0 5px 2px #000000;
   display: none;
   transition: 0.6s ease;
@@ -403,6 +449,17 @@ body::-webkit-scrollbar-thumb {
   display: grid;
   grid-template-columns: 10% 1fr;
   gap: 0.3em;
+  position: relative;
+}
+.offcanvas-bars .offcanvas-bars-link .offcanvas-bars-link-item a:hover::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 80%;
+  height: 2px;
+  background-color: red;
+  animation: crescerBordaBottom 0.8s ease-in-out;
 }
 .offcanvas-bars .offcanvas-bars-link .offcanvas-bars-link-item a i {
   align-self: center;
@@ -490,6 +547,14 @@ body::-webkit-scrollbar-thumb {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {
@@ -667,6 +732,14 @@ main .principal-banner .principal-banner-ancora {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
 }
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 @keyframes crescerBordaBottom {
   0% {
     width: 0;
@@ -703,7 +776,7 @@ main .principal-banner .principal-banner-ancora {
 }
 main .principal-timers {
   max-width: 95%;
-  margin: 1.5em auto;
+  margin: 1em auto;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -792,6 +865,14 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {
@@ -892,6 +973,14 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
 }
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 @keyframes crescerBordaBottom {
   0% {
     width: 0;
@@ -956,6 +1045,14 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
 }
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 @keyframes crescerBordaBottom {
   0% {
     width: 0;
@@ -995,7 +1092,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   color: #ffffff;
   font-weight: 400;
   width: 95%;
-  margin: 2em auto;
+  margin: 1em auto;
   background-color: #C40C0C;
   max-width: 360px;
   height: -moz-fit-content;
@@ -1022,7 +1119,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   box-shadow: 0 0 2px 1px #000000;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item {
-  background-color: #0002A1;
+  background-color: #03056e;
   width: 100%;
   font-weight: 300;
   display: grid;
@@ -1068,7 +1165,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   background-color: orangered;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-container .principal-tarefas-lista-item-tarefaAtual {
-  background-color: orange;
+  background-color: #ff800a;
   color: #C40C0C;
 }
 .principal-tarefas .principal-tarefas-lista .principal-tarefas-lista-item .principal-tarefas-lista-item-btnDetelhes {
@@ -1078,7 +1175,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   padding: 0.1em 0;
   position: inherit;
   font-weight: 600;
-  background-color: #03056e;
+  background-color: #020366;
   border: none;
   color: #ffffff;
   text-shadow: 1px 1px 2px #000000;
@@ -1318,7 +1415,7 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   cursor: pointer;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1200px) {
   .principal-tarefas {
     max-width: 550px;
   }
@@ -1329,12 +1426,17 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
     font-size: 1.4em;
   }
 }
+@media screen and (min-width: 1440px) {
+  .principal-tarefas {
+    max-width: 650px;
+  }
+}
 .principal {
   display: grid;
   grid-template-rows: repeat(3, auto);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .principal {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1352,6 +1454,14 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {
@@ -1395,7 +1505,6 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   font-weight: 400;
   color: #ffffff;
   text-align: center;
-  margin-top: 2.5em;
 }
 .rodape strong {
   font-weight: 400;
@@ -1416,6 +1525,14 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {
@@ -1455,6 +1572,21 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   font-family: "Oswald", sans-serif;
   padding: 0.5em 1em;
   color: #ffffff;
+  position: relative;
+}
+.sobre .sobre-voltar {
+  text-decoration: none;
+  color: #ffffff;
+  position: absolute;
+  top: 0.5%;
+  right: 2%;
+  width: 25px;
+  height: 25px;
+  background-color: #D71313;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
 }
 .sobre .sobre-titulo {
   text-align: center;
@@ -1527,6 +1659,11 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   .sobre {
     padding: 1em 1.5em;
   }
+  .sobre .sobre-voltar {
+    top: 1%;
+    width: 30px;
+    height: 30px;
+  }
   .sobre .sobre-titulo {
     font-size: 1.8em;
   }
@@ -1546,6 +1683,12 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 1em 1.5em;
+  }
+  .sobre .sobre-voltar {
+    top: 1.2%;
+    font-size: 1.2em;
+    width: 35px;
+    height: 35px;
   }
   .sobre .sobre-titulo {
     font-size: 1.8em;
@@ -1573,6 +1716,10 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
     max-width: 80%;
     margin: 0 auto;
   }
+  .sobre .sobre-lista-botoes {
+    grid-column: 2/3;
+    margin-top: 1em;
+  }
 }
 @media screen and (min-width: 1024px) {
   .sobre {
@@ -1596,10 +1743,25 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
   .sobre .sobre-lista .sobre-lista-item {
     font-size: 1.3em;
   }
+  .sobre .sobre-lista-botoes {
+    grid-column: 2/3;
+    margin-top: 1.5em;
+  }
+  .sobre .sobre-lista-botoes a {
+    font-size: 1.5em;
+    padding: 0.4em 0.8em;
+  }
 }
 @media screen and (min-width: 1440px) {
   .sobre {
     padding: 1.5em 4em 3.5em 4em;
+  }
+  .sobre .sobre-voltar {
+    top: 1.5%;
+    font-size: 1.6em;
+    right: 1%;
+    width: 45px;
+    height: 45px;
   }
   .sobre .sobre-titulo {
     font-size: 2.5em;
@@ -1621,6 +1783,14 @@ main .principal-timers .principal-timers-relogio #btnIniciar p {
 @font-face {
   font-family: "DSDIGI";
   src: url("../fonts/ds-digit.ttf");
+}
+@keyframes crescerBordaBottomCurta {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 @keyframes crescerBordaBottom {
   0% {

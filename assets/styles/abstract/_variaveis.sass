@@ -7,8 +7,8 @@
 $rosa-1: #FF204E
 $rosa-2: #E90064
 $azul-1: #040552
-$azul-2: #0002A1
-$azul-3: #03056e
+$azul-2: #03056e
+$azul-3: #020366
 $azul-4: #4CB9E7
 $azul-5: #2528d1
 $vermelho-1: #C40C0C
@@ -17,7 +17,7 @@ $preto: #000000
 $branco: #ffffff
 $amarelo: #fbff08
 
-$background-gradient: linear-gradient(45deg, $azul-2, $azul-3)
+$background-gradient: linear-gradient(45deg, $azul-1, $azul-2, $azul-3)
 
 // Fontes
 $fonte-primaria: "Freeman", sans-serif
@@ -29,10 +29,16 @@ $fonte-relogio: 'DSDIGI', sans-serif
 $animacaoFlutuar: flutuar 2s ease-in-out infinite
 $animacaoBarraTexto: piscar .9s ease infinite
 $animacaoCrescerBorda: crescerBordaBottom .8s ease-in-out
+$animacaoCrescerBordaCurta: crescerBordaBottomCurta .8s ease-in-out
 
 $piscarCursor: piscarCursor .7s infinite
 $animacaoOffCanvasAbrir: offcanvasAbrir .6s ease
 
+@keyframes crescerBordaBottomCurta
+    0%
+        width: 0
+    100%
+        width: 100%
 @keyframes crescerBordaBottom
     0%
         width: 0
