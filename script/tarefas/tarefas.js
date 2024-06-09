@@ -19,6 +19,8 @@ principalTarefasFormulario.addEventListener('submit', (e) => {
     const tituloTarefa = e.target.querySelector('#tituloTarefa')
     const inputTopicos = e.target.querySelector('#inputAdicionarTopico')
     const descricaoTarefa = e.target.querySelector('#descricaoTarefa')
+    const arrayDeDescricaoTarefa = descricaoTarefa.value.split('\n').filter(a => a = a)
+
     const listaDeTopicos = []
     e.target.querySelectorAll('.principal-tarefas-formulario-topicos-lista li').forEach(li => {
         const informacoesTopico = {
@@ -28,10 +30,9 @@ principalTarefasFormulario.addEventListener('submit', (e) => {
         listaDeTopicos.push(informacoesTopico)
     });
 
-
     const objetoInformacoesTarefa = {
         tituloTarefa: tituloTarefa.value,
-        descricaoTarefa: descricaoTarefa.value,
+        descricaoTarefa: arrayDeDescricaoTarefa,
         listaDeTopicos: listaDeTopicos,
         tarefaConcluida: false,
         tarefaAtual: false
@@ -74,7 +75,16 @@ function criarTarefa(objetoInformacoesTarefa) {
 
     const divConteudoDetalhes = criarElemento('div', 'principal-tarefas-lista-item-detalhes')
     const divConteudoDetalhesTitulo1 = criarElemento('h4', 'principal-tarefas-lista-item-detalhes-titulo', 'Descrição/Resumo')
-    const divConteudoDetalhesDescricao = criarElemento('p', 'principal-tarefas-lista-item-detalhes-descricao', objetoInformacoesTarefa.descricaoTarefa)
+    const divConteudoDetalhesDescricao = criarElemento('div', 'principal-tarefas-lista-item-detalhes-descricao')
+    console.log(objetoInformacoesTarefa.descricaoTarefa)
+
+    objetoInformacoesTarefa.descricaoTarefa.forEach(paragrafo => {
+        const p = document.createElement('p')
+        p.innerHTML = paragrafo
+        console.log(p)
+        divConteudoDetalhesDescricao.appendChild(p)
+    })
+
     const divConteudoDetalhesTitulo2 = criarElemento('h4', 'principal-tarefas-lista-item-detalhes-titulo', 'Tópicos')
     const listaDeTopicos = criarElemento('ul', 'principal-tarefas-lista-item-detalhes-lista')
 
@@ -111,16 +121,12 @@ function criarTarefa(objetoInformacoesTarefa) {
     const btnAlterar = criarElemento('button', 'principal-tarefas-lista-item-alterar', '<i class="fa-regular fa-pen-to-square"></i>')
     btnAlterar.addEventListener('click', (e) => {
         const tarefaAtual = e.target.closest('.principal-tarefas-lista-item')
-        
-        console.log(tarefaAtual)
 
         if (btnAlterar.classList.contains('btn-alterar-ativo')) {
-            console.log('nao tem')
             btnAlterar.classList.remove('btn-alterar-ativo')
             const alterarFormulario = tarefaAtual.children[tarefaAtual.children.length - 1]
             alterarFormulario.remove()
         } else {
-            console.log('tem')
             btnAlterar.classList.add('btn-alterar-ativo')
             const form = criarFormularioAlterarTarefa(objetoInformacoesTarefa)
             const formElemento = form.outerHTML
@@ -142,12 +148,12 @@ function criarTarefa(objetoInformacoesTarefa) {
         const listaDeTopicosDaLiAtual = liAtual.querySelectorAll('.principal-tarefas-lista-item-detalhes-lista-item')
         const listaTodosOsTopicos = liAtual.parentElement.querySelectorAll('.principal-tarefas-lista-item-detalhes-lista-item')
 
-        if(liAtual.classList.contains('tarefaAtual')){
+        if (liAtual.classList.contains('tarefaAtual')) {
             liAtual.classList.remove('tarefaAtual')
             btnVerDetalhesAtual.classList.remove('tarefaAtual')
             arrayTarefas[acharElementoDentroDoArrayPeloId(idLiAtual)].tarefaAtual = false
             listaDeTopicosDaLiAtual.forEach(li => li.classList.remove('tarefaAtual'))
-        }else{
+        } else {
             listaDeLis.forEach(li => li.classList.remove('tarefaAtual'))
             listaDeBtnVerDetalhes.forEach(btn => btn.classList.remove('tarefaAtual'))
             listaTodosOsTopicos.forEach(topico => topico.classList.remove('tarefaAtual'))
@@ -159,7 +165,7 @@ function criarTarefa(objetoInformacoesTarefa) {
         }
         escreverInformacoesNoLocalStorage()
     })
-    
+
     divContainer.appendChild(btnConcluir)
     divContainer.appendChild(btnExcluir)
     divContainer.appendChild(btnAlterar)
@@ -331,14 +337,17 @@ function criarFormularioAlterarTarefa(objetoInformacoesTarefa) {
 
 function adicionarEventoNoFormulario(objetoInformacoesTarefa) {
     const form = document.querySelector('.principal-tarefas-lista-item-detalhes-formularioAlterarTarefa')
-    
+
     form.addEventListener('submit', (e) => {
         e.preventDefault()
         const liPai = e.target.closest('.principal-tarefas-lista-item')
         const novoTitulo = e.target.querySelector('.formularioAlterarTarefa-titulo-tarefa-input')
         const novaDescricao = e.target.querySelector('.formularioAlterarTarefa-descricao-tarefa-textarea')
+        const arrayDeDescricaoTarefa = novaDescricao.value.split('\n').filter(a => a = a)
+
+        console.log('aq')
         const objetoTarefaAterado = {
-            descricaoTarefa: novaDescricao.value,
+            descricaoTarefa: arrayDeDescricaoTarefa,
             id: objetoInformacoesTarefa.id,
             listaDeTopicos: objetoInformacoesTarefa.listaDeTopicos,
             tarefaConcluida: objetoInformacoesTarefa.tarefaConcluida,
@@ -349,7 +358,15 @@ function adicionarEventoNoFormulario(objetoInformacoesTarefa) {
 
         // Alterando dados visuais
         liPai.querySelector('.principal-tarefas-lista-item-titulo').innerHTML = objetoTarefaAterado.tituloTarefa
-        liPai.querySelector('.principal-tarefas-lista-item-detalhes-descricao').innerHTML = objetoTarefaAterado.descricaoTarefa
+        console.log(objetoTarefaAterado.descricaoTarefa)
+        const elementoDescricao = liPai.querySelector('.principal-tarefas-lista-item-detalhes-descricao')
+        elementoDescricao.innerHTML = ''
+
+        objetoTarefaAterado.descricaoTarefa.forEach(tarefa => {
+            const p = document.createElement('p')
+            p.innerHTML = tarefa
+            elementoDescricao.appendChild(p)
+        })
 
         const liBtnAlterar = liPai.querySelector(".btn-alterar-ativo")
         liBtnAlterar.classList.remove('btn-alterar-ativo')
