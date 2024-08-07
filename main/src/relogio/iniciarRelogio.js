@@ -2,10 +2,10 @@ import gerarCaixaDeMensagem from "../assets/gerarCaixaDeMensagem.js"
 
 const btnControlarRelogio = document.querySelector('#btnControlarRelogio')
 const conteudoCategoria = document.querySelector('.conteudo-categoria')
-const audioPlay = new Audio('../public/audios/play.mp3')
-const audioPause = new Audio('../public/audios/pause.mp3')
-const audioChuva = new Audio('../public/audios/chuva.mp3')
-const audioDespertar = new Audio('../public/audios/despertar.mp3')
+const audioPlay = new Audio('../main/public/audios/play.mp3')
+const audioPause = new Audio('../main/public/audios/pause.mp3')
+const audioChuva = new Audio('../main/public/audios/chuva.mp3')
+const audioDespertar = new Audio('../main/public/audios/despertar.mp3')
 let intervalo = null
 
 export default function iniciarRelogio() {
