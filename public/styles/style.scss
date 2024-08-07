@@ -1,0 +1,19 @@
+@import "./abstract/_reset.sass";
+@import "./components/_cabecalho.sass";
+@import "./components/_cabecalho-offcanvas.sass";
+@import "./components/_conteudo.sass";
+@import "./components/_conteudo-banner.sass";
+@import "./components/_conteudo-categoria.sass";
+@import "./components/_conteudo-tarefas.sass";
+@import "./components/_conteudo-ancora-topo.sass";
+@import "./components/_container-mensagem.sass";
+@import "./components/_rodape.sass";
+
+
+@import "./components/_conteudo-sobre.sass";
+
+
+@import "./media/_media425.sass";
+@import "./media/_media768.sass";
+@import "./media/_media1024.sass";
+@import "./media/_media1440.sass";

@@ -1,0 +1,73 @@
+@import '../abstract/_variaveis'
+@media screen and ( min-width: 1440px )
+    .cabecalho
+        .cabecalho-menu
+            margin-right: 4em
+        .cabecalho-menu
+            max-width: 700px
+            margin-left: auto
+            .cabecalho-menu-item
+                a
+                    font-size: 1.2em
+                    padding: 0 1em
+    .conteudo
+        .conteudo-banner
+            max-width: 1200px
+            margin-top: 2em
+            .conteudo-banner-img
+                max-width: 500px
+            .conteudo-banner-texto
+                font-size: 3em
+            .conteudo-banner-ancora
+                font-size: 5em
+                width: 120px
+                height: 120px
+                margin-top: 0
+    .rodape
+        display: grid
+        grid-template-columns: 1fr 700px
+        margin-bottom: 0
+        gap: 0
+        .rodape-texto
+            &:nth-child(1)
+                grid-column: 1/3
+            &:nth-child(2)
+                margin: 0
+                display: flex
+                justify-content: center
+                align-items: center
+        .rodape-redes
+            background-color: $cinza-escuro
+            width: 100%
+            .rodape-redes-item
+                a
+                    font-size: 2em
+    // media da pagina sobre
+    .conteudo-sobre
+        .contexto-historico
+            grid-template-columns: 1fr 25%
+            .conteudo-sobre-imagem
+                padding: 1em
+            .conteudo-sobre-titulo
+                grid-column: 1/3
+            .conteudo-sobre-paragrafo
+                font-size: 1.5em
+        .como-funciona
+            .conteudo-sobre-imagem
+                grid-column: 1/3
+                grid-row: 3/4
+                width: 100%
+                max-width: 400px
+                justify-self: center
+                margin: 1em 0
+            .conteudo-sobre-paragrafo
+                &:nth-child(2)
+                    grid-column: 1/3
+                    font-size: 1.5em
+            ul
+                li
+                    font-size: 1.5em
+        .beneficios
+            ul
+                li
+                    font-size: 1.5em

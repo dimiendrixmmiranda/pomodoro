@@ -1,0 +1,43 @@
+@media screen and ( min-width: 1024px )
+    .cabecalho
+        grid-template-columns: 220px 1fr 60px
+        .cabecalho-menu
+            max-width: 600px
+            margin-left: auto
+            .cabecalho-menu-item
+                a
+                    font-size: 1em
+                    padding: 0 1em
+
+    .conteudo
+        .conteudo-banner
+            max-width: 1000px
+            .conteudo-banner-img
+                max-width: 390px
+            .conteudo-banner-texto
+                font-size: 2.2em
+            .conteudo-banner-ancora
+                font-size: 4em
+                width: 100px
+                height: 100px
+    // media da pagina sobre
+    .conteudo-sobre
+        .conteudo-sobre-titulo
+            font-size: 2em
+        .contexto-historico
+            .conteudo-sobre-titulo
+                grid-column: 1/3
+            .conteudo-sobre-paragrafo
+                font-size: 1.3em
+        .como-funciona
+            grid-template-columns: 1fr 20%
+            .conteudo-sobre-imagem
+                max-width: 180px
+            .conteudo-sobre-paragrafo, ul li
+                font-size: 1.3em
+        .beneficios
+            ul
+                li
+                    font-size: 1.3em
+            .conteudo-sobre-paragrafo
+                font-size: 1.3em

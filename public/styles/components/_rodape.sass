@@ -1,0 +1,46 @@
+@import '../abstract/_variaveis'
+.rodape
+    background-color: $rosa-escuro
+    padding-top: .5em
+    display: flex
+    flex-direction: column
+    color: $branco
+    margin-top: 2em
+    .rodape-texto
+        font-weight: 600
+        padding: .5em
+        &:nth-child(1)
+            font-size: 1.05em
+            text-align: center
+            padding-bottom: 1em
+        &:nth-child(2)
+            text-align: center
+            font-size: 1.2em
+            margin: .5em 0
+            background-color: $cinza-escuro
+            padding: .5em 0
+        strong
+            font-weight: 800
+    .rodape-redes
+        display: flex
+        list-style: none
+        justify-content: space-around
+        align-items: flex-end
+        height: 60px
+        margin: 0 auto
+        width: 95%
+        max-width: 700px
+        .rodape-redes-item
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-grow: 1
+            padding-bottom: .5em
+            position: relative
+            &:hover
+                margin-bottom: 10px
+                transition: .6s ease
+            a
+                text-decoration: none
+                color: $branco
+                font-size: 1.6em

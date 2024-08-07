@@ -1,0 +1,121 @@
+@import '../abstract/_variaveis'
+.cabecalho
+    display: grid
+    grid-template-columns: 1fr 20%
+    padding: .3em 0
+    .cabecalho-link
+        display: grid
+        grid-template-columns: 20% 1fr
+        text-decoration: none
+        color: $branco
+        position: relative
+        .cabecalho-link-imagem
+            width: 100%
+            height: 100%
+            display: flex
+            justify-content: center
+            align-items: center
+            img
+                width: 100%
+                max-width: 47px
+        .cabecalho-link-titulo
+            font-family: $fonte-titulo
+            display: flex
+            flex-direction: column
+            position: relative
+            h1
+                position: absolute
+                top: 5%
+                left: 0
+                font-size: 1.8em
+                letter-spacing: 2px
+            p
+                position: absolute
+                bottom: 5%
+                left: 0
+                font-size: .7em
+                font-family: $fonte-principal
+    .cabecalho-menuOffcanvas
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 100%
+        button
+            width: 100%
+            height: 100%
+            font-size: 1.8em
+            color: $branco
+            background: transparent
+            border: none
+    .cabecalho-menu
+        display: flex
+        list-style: none
+        margin-right: 1.5em
+        gap: .5em
+        display: none
+        .cabecalho-menu-item
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 100%
+            height: 100%
+            cursor: pointer
+            transition: .6s ease
+            border-radius: 6px
+            &:hover
+                background-color: $rosa-escuro
+                box-shadow: 0 0 3px 1px $preto
+                a
+                    transition: .6s ease
+                    scale: 1.1
+            a
+                text-decoration: none
+                color: $branco
+                font-weight: 600
+                font-size: .8em
+                width: 80%
+                height: 80%
+                display: flex
+                justify-content: center
+                align-items: center
+                gap: .5em
+                white-space: nowrap
+                padding: .2em
+    .cabecalho-tema
+        display: flex
+        justify-content: start
+        align-items: center
+        display: none
+        input
+            appearance: none
+            border: solid 1px $preto
+            width: 50px
+            height: 25px
+            border-radius: 8px
+            background-color: $rosa-escuro
+            position: relative
+            transition: .6s ease
+            box-shadow: 0 0 2px 1px $preto
+            cursor: pointer
+            &::before
+                content: ''
+                background-image: url('../imgs/icone-sol-preenchido.png')
+                background-repeat: no-repeat
+                background-size: cover
+                background-position: center
+                position: absolute
+                top: -1px
+                left: -1px
+                width: 25px
+                height: 25px
+                border-radius: 8px
+                background-color: $branco
+                transition: .6s ease
+                box-shadow: 0 0 2px 1px $preto
+            &:checked
+                &::before
+                    left: 100%
+                    background-color: $preto
+                    transform: translate(-99%)
+                    background-image: url('../imgs/icone-lua-preenchido.png')

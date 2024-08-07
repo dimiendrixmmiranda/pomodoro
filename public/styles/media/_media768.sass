@@ -1,0 +1,109 @@
+@import '../abstract/_variaveis'
+@media screen and ( min-width: 768px )
+    .cabecalho
+        grid-template-columns: 220px 1fr 60px // aq
+        .cabecalho-link
+            grid-template-columns: 60px 1fr
+            .cabecalho-link-imagem
+                img
+                    max-width: auto
+                    width: 55px
+            .cabecalho-link-titulo
+                width: 100%
+                h1
+                    font-size: 2em
+                    top: 0%
+                p
+                    bottom: 0%
+                    font-size: .75em
+        .cabecalho-menuOffcanvas
+            display: none
+        .cabecalho-menu, .cabecalho-tema
+            display: flex
+    .conteudo
+        .conteudo-banner
+            display: grid
+            grid-template-columns: repeat(2, 50%)
+            max-width: 95%
+            justify-content: center
+            align-items: center
+            .conteudo-banner-img
+                max-width: 390px
+            .conteudo-banner-texto
+                font-size: 1.8em
+            .conteudo-banner-ancora
+                grid-column: 1/3
+                font-size: 3.2em
+                width: 80px
+                height: 80px
+        .conteudo-categoria
+            width: 90%
+            max-width: 800px
+            .conteudo-categoria-botoes
+                gap: .5em
+                button
+                    p
+                        font-size: 1.3em
+                        font-weight: 600
+            .conteudo-categoria-relogio
+                height: 210px
+        .conteudo-tarefas
+            max-width: 800px
+        .conteudo-ancora-topo
+            margin: 0
+            margin-left: auto
+            margin-right: 2em
+    // media da pagina sobre
+    .conteudo-sobre
+        .contexto-historico
+            display: grid
+            grid-template-columns: 1fr 35%
+            margin-bottom: 2em
+            .conteudo-sobre-imagem
+                grid-column: 2/3
+                grid-row: 2/4
+                margin: 0
+                display: flex
+                justify-content: center
+                align-items: center
+                padding: .5em
+            .conteudo-sobre-titulo
+                grid-column: 1/3
+            .conteudo-sobre-paragrafo
+                font-size: 1.1em
+                &:nth-child(5)
+                    grid-column: 1/3
+        .como-funciona
+            display: grid
+            grid-template-columns: 1fr 35%
+            margin-bottom: 2em
+            .conteudo-sobre-titulo
+                grid-column: 1/3
+            .ajuste
+                background-color: red
+                grid-row: 3/4
+            .conteudo-sobre-paragrafo
+                font-size: 1.1em
+            .conteudo-sobre-imagem
+                max-width: 180px
+                justify-self: end
+                margin: 0
+            ul
+                grid-column: 1/3
+                li
+                    font-size: 1.1em
+        .beneficios
+            ul
+                grid-column: 1/3
+                li
+                    font-size: 1.1em
+        .conteudo-sobre-ancora
+            display: flex
+            gap: .5em
+            margin-left: auto
+            a
+                width: fit-content
+                font-size: 1.2em
+                padding: .6em
+                &:first-child
+                    margin-left: auto

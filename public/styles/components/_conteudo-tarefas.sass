@@ -1,0 +1,166 @@
+@import '../abstract/_variaveis'
+.conteudo-tarefas
+    width: 95%
+    margin: 0em auto 1.5em auto
+    display: flex
+    flex-direction: column
+    position: relative
+    .conteudo-tarefas-botao
+        display: flex
+        justify-content: center
+        align-items: center
+        font-size: 1.4em
+        font-weight: 800
+        padding: .4em 0
+        gap: .5em
+        background-color: $azul-escuro
+        color: $branco
+    .active
+        display: block!important
+    .conteudo-tarefas-formulario
+        background-color: $rosa-escuro
+        padding: .5em
+        display: none
+        fieldset
+            border: none
+            display: flex
+            flex-direction: column
+            gap: .2em
+            color: $branco
+        .titulo-tarefa, .descricao-tarefa
+            margin-bottom: .5em
+            input, textarea
+                padding: .5em
+                width: 100%
+                height: 100%
+            input
+                height: 30px
+            textarea
+                height: 200px
+            label
+                font-weight: 600
+        .descricao-tarefa
+            .descricao-tarefa-container
+                display: flex
+                flex-direction: column
+                width: 100%
+                height: 100%
+                .descricao-tarefa-container-ferramentas
+                    display: flex
+                    width: 100%
+                    height: 100%
+                    margin-bottom: .1em
+                    button
+                        flex-grow: 1
+                        // width: 25px
+                        height: 25px
+        .botoes
+            display: flex
+            flex-direction: row
+            button
+                width: 100%
+                font-size: 1.2em
+                font-weight: 800
+                color: $branco
+                background-color: $azul-escuro
+                padding: .2em 0
+    .conteudo-tarefas-lista
+        background-color: $rosa-escuro
+        padding: .5em
+        margin-top: 1em
+        .conteudo-tarefas-titulo
+            padding: .5em
+            text-align: center
+            color: $branco
+            background-color: $azul-escuro
+            margin-bottom: .3em
+        .conteudo-tarefas-lista-lista
+            display: flex
+            flex-direction: column
+            gap: .5em
+            .conteudo-tarefas-lista-lista-item
+                display: flex
+                flex-direction: column
+                color: $branco
+                .container
+                    background-color: $azul-escuro
+                    padding: .2em .2em 0 .2em
+                    &:nth-child(1)
+                        display: grid
+                        grid-template-columns: 1fr 60px
+                        row-gap: .3em
+                        .titulo-tarefa
+                            grid-column: 1/2
+                            position: relative
+                            p
+                                position: absolute
+                                top: 50%
+                                left: 0
+                                transform: translate(0, -50%)
+                                font-weight: bold
+                                width: 100%
+                                padding-left: .5em
+                        .botoes-acoes-tarefa
+                            grid-column: 2/3
+                            display: grid
+                            grid-template-columns: repeat(2, 50%)
+                            button
+                                font-size: .9em
+                                color: $branco
+                            .concluir
+                                background-color: $verde-3
+                            .excluir
+                                background-color: $vermelho
+                            .alterar
+                                background-color: $amarelo-1
+                            .arquivar
+                                background-color: $marrom
+
+                        .botao-ver-detalhes
+                            grid-column: 1/3
+                            letter-spacing: 6px
+                            font-size: .5em
+                            font-weight: bold
+                            background-color: $azul-claro
+                            border: none
+                            color: $branco
+                            padding: .2em 0
+                    &:nth-child(2)
+                        padding: .5em
+                        display: none
+                        flex-direction: column
+                        gap: .8em
+                        .container-descricao-texto
+                            font-weight: 300
+                            sublinhado
+                                text-decoration: underline
+                .alterar-tarefa
+                    background-color: $azul-escuro
+                    display: grid
+                    padding: .5em
+                    gap: 1em
+                    fieldset
+                        border: none
+                    .alterar-tarefa-titulo, .alterar-tarefa-descricao
+                        display: flex
+                        flex-direction: column
+                        gap: .2em
+                        input
+                            height: 25px
+                            padding-left: .5em
+                        textarea
+                            height: 200px
+                            padding: .5em
+                    .alterar-tarefa-botoes
+                        display: grid
+                        grid-template-columns: repeat(2, 50%)
+                        button
+                            width: 95%
+                            font-size: 1.4em
+                            font-weight: 700
+                            padding: .2em 0
+                            background-color: $rosa-escuro
+                            color: $branco
+                            justify-self: center
+                            align-self: center
+                            line-height: 1.1

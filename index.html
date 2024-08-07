@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro - Sua Jornada de Foco!</title>
+    <link rel="shortcut icon" href="./public/imgs/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./public/styles/style.css">
+</head>
+
+<body data-tema="light">
+    <header class="cabecalho" id="topo">
+        <a href="./index.html" class="cabecalho-link">
+            <div class="cabecalho-link-imagem">
+                <img src="./public/imgs/logo.png" alt="Tomate em formato de relogio, logo do site">
+            </div>
+            <div class="cabecalho-link-titulo">
+                <h1>Pomodoro</h1>
+                <p>Sua Jornada de Foco!</p>
+            </div>
+        </a>
+        <ul class="cabecalho-menu">
+            <li class="cabecalho-menu-item">
+                <a href="/index.html"><i class="fa-solid fa-house"></i> Página Inicial</a>
+            </li>
+            <li class="cabecalho-menu-item">
+                <a href="/public/pages/sobre.html"><i class="fa-solid fa-book"></i> Sobre a Técnica</a>
+            </li>
+            <li class="cabecalho-menu-item">
+                <a href="#"><i class="fa-regular fa-rectangle-list"></i> Lista de Tarefas</a>
+            </li>
+        </ul>
+        <div class="cabecalho-tema">
+            <input type="checkbox" name="tema" id="tema">
+        </div>
+        <div class="cabecalho-menuOffcanvas">
+            <button id="btnOffcanvas">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <div class="conteudo-banner">
+            <div class="conteudo-banner-img">
+                <img src="./public/imgs/banner-1.svg" alt="banner-1">
+            </div>
+            <div class="conteudo-banner-texto">
+                Foco, disciplina, produtividade. Vamos nessa! Utilize
+                nossa ferramenta para extrair de você seu potencial máximo!
+            </div>
+            <div class="conteudo-banner-ancora">
+                <a href="#conteudoTarefas"><i class="fa-solid fa-angles-down"></i></a>
+            </div>
+        </div>
+
+        <div class="conteudo-categoria">
+            <div class="conteudo-categoria-botoes">
+                <button class="active" data-categoria="pomodoro">
+                    <p>Pomodoro</p>
+                </button>
+                <button data-categoria="descanso-curto">
+                    <p>Descanso Curto</p>
+                </button>
+                <button data-categoria="descanso-longo">
+                    <p>Descanso Longo</p>
+                </button>
+            </div>
+            <div class="conteudo-categoria-relogio" id="conteudoCategoriaRelogio"></div>
+            <div class="conteudo-categoria-controlar">
+                <button id="btnControlarRelogio" data-tempo="1500" data-fator="1500"><i class="fa-solid fa-play"></i>
+                    Iniciar</button>
+            </div>
+        </div>
+
+        <div class="conteudo-tarefas" id="conteudoTarefas">
+            <button class="conteudo-tarefas-botao" id="adicionarTarefa">
+                Adicionar Tarefa <i class="fa-solid fa-plus"></i>
+            </button>
+            <form class="conteudo-tarefas-formulario" id="formTarefas">
+                <fieldset class="titulo-tarefa">
+                    <label for="tituloTarefa">Titulo da Tarefa:</label>
+                    <input type="text" name="tituloTarefa" id="tituloTarefa" required minlength="3" maxlength="50">
+                </fieldset>
+                <fieldset class="descricao-tarefa">
+                    <label for="descricaoTarefa">Descrição da Tarefa:</label>
+                    <div class="descricao-tarefa-container">
+                        <div class="descricao-tarefa-container-ferramentas">
+                            <button id="negrito" type="button"><i class="fa-solid fa-bold"></i></button>
+                            <button id="italico" type="button"><i class="fa-solid fa-italic"></i></button>
+                            <button id="sup" type="button">S+</button>
+                            <button id="sub" type="button">S-</button>
+                            <button id="sublinhado" type="button">U</button>
+                            <button id="uppercase" type="button">A+</button>
+                            <button id="lowercase" type="button">a-</button>
+                            <!-- <button id="corFonte" type="button">cf</button>
+                            <button id="corFundo" type="button">bg</button> -->
+                        </div>
+                        <textarea name="descricaoTarefa" id="descricaoTarefa" required minlength="3"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset class="botoes">
+                    <button type="submit">Salvar</button>
+                    <button type="reset">Cancelar</button>
+                </fieldset>
+            </form>
+
+            <div class="conteudo-tarefas-lista" id="">
+                <h2 class="conteudo-tarefas-titulo">Lista de Tarefas</h2>
+                <ul class="conteudo-tarefas-lista-lista" id="listaDeTarefas"></ul>
+            </div>
+        </div>
+
+        <div class="conteudo-ancora-topo">
+            <a href="#topo">Voltar ao topo <i class="fa-solid fa-hand-point-up"></i></a>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <p class="rodape-texto">Projeto desenvolvido e idealizado por <strong>Dimi Endrix Martins Miranda</strong>
+            utilizando HTML, CSS(SASS) e JavaScript, com foco em manipulação de DOM e LocalStorage</p>
+        <p class="rodape-texto">Projeto sem fins lucrativos!</p>
+        <ul class="rodape-redes">
+            <li class="rodape-redes-item">
+                <a target="_blank" href="https://www.linkedin.com/in/dimi-endrix-martins-miranda-595690271/"><i class="fa-brands fa-linkedin"></i></a>
+            </li>
+            <li class="rodape-redes-item">
+                <a target="_blank" href="https://github.com/dimiendrixmmiranda/dimiendrixmmiranda"><i class="fa-brands fa-github"></i></a>
+            </li>
+            <li class="rodape-redes-item">
+                <a target="_blank" href="https://www.facebook.com/dimi.martins.376"><i class="fa-brands fa-facebook"></i></a>
+            </li>
+            <li class="rodape-redes-item">
+                <a target="_blank" href="https://www.instagram.com/dimimmartins2486/"><i class="fa-brands fa-square-instagram"></i></a>
+            </li>
+        </ul>
+    </footer>
+
+    <div class="offcanvas" id="offcanvas">
+        <h2 class="offcanvas-titulo">Menu <i class="fa-solid fa-bars-staggered"></i></h2>
+        <button class="offcanvas-botao-fechar" id="btnOffcanvasFechar">
+            <i class="fa-regular fa-circle-xmark"></i>
+        </button>
+        <ul class="offcanvas-lista">
+            <li class="offcanvas-lista-item">
+                <a href="../../index.html"><i class="fa-solid fa-house"></i> Página Inicial</a>
+            </li>
+            <li class="offcanvas-lista-item">
+                <a href="./sobre.html"><i class="fa-solid fa-book"></i> Sobre a Técnica</a>
+            </li>
+            <li class="offcanvas-lista-item">
+                <a href="#"><i class="fa-regular fa-rectangle-list"></i> Lista de Tarefas</a>
+            </li>
+        </ul>
+        <div class="offcanvas-tema">
+            <input type="checkbox" name="tema" id="tema">
+            <p>Alterar Tema</p>
+        </div>
+        <ul class="offcanvas-redes">
+            <li class="offcanvas-redes-item">
+                <a target="_blank" href="https://www.linkedin.com/in/dimi-endrix-martins-miranda-595690271/"><i
+                        class="fa-brands fa-linkedin"></i></a>
+            </li>
+            <li class="offcanvas-redes-item">
+                <a target="_blank" href="https://github.com/dimiendrixmmiranda/dimiendrixmmiranda"><i
+                        class="fa-brands fa-github"></i></a>
+            </li>
+            <li class="offcanvas-redes-item">
+                <a target="_blank" href="https://www.facebook.com/dimi.martins.376"><i
+                        class="fa-brands fa-facebook"></i></a>
+            </li>
+            <li class="offcanvas-redes-item">
+                <a target="_blank" href="https://www.instagram.com/dimimmartins2486/"><i
+                        class="fa-brands fa-square-instagram"></i></a>
+            </li>
+        </ul>
+    </div>
+
+
+    <script type="module" src="./src/index.js"></script>
+</body>
+
+</html>
